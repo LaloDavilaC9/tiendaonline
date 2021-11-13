@@ -1,5 +1,9 @@
 body{
-    background-image: "../Recursos/fondos-pantalla-apple_thumb1200_4-3.jpg"
+    background-image: url("../Recursos/fondos-pantalla-apple_thumb1200_4-3.jpg");
+      height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 

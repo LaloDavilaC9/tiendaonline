@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>¡Bienvenido a Blanco!</title>
-        <link rel="stylesheet" href="estilosUAA.css">
+    <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
 
     </head>
     <body>
