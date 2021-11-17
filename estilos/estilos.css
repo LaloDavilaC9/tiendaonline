@@ -8,7 +8,7 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     font-family: "Benton Sans", sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -60,6 +60,16 @@
     width: 51%;
     height: 65%;
     border-radius: 50px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.camposDesign{
+    border: 12;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 15px;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
 }
