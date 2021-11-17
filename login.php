@@ -60,7 +60,7 @@
                                         </form>
                                     </div>
                                     <!--Permitimos que se navegue por la pagina pero sin crear una sesion.-->
-                                    <p>¿No tienes una cuenta? <a href="paginaPrincipal.php">Continuar sin iniciar sesión</a>
+                                    <p>¿No tienes una cuenta? <a href="paginaPrincipal.php">Registrarse</a>
                                         <br><br><br><br><br>
                                     </p>
                                 </div>
