@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 04:45 AM
+-- Generation Time: Nov 18, 2021 at 04:59 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.3.29
 
@@ -78,16 +78,17 @@ CREATE TABLE `producto` (
   `stock_Producto` int(11) NOT NULL,
   `precioUnitario_Producto` float NOT NULL,
   `imagen_Producto` varchar(255) NOT NULL,
-  `estrellas_Producto` int(11) NOT NULL
+  `estrellas_Producto` int(11) NOT NULL,
+  `categoria_Producto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `producto`
 --
 
-INSERT INTO `producto` (`id_Producto`, `nombre_Producto`, `descripcion_Producto`, `stock_Producto`, `precioUnitario_Producto`, `imagen_Producto`, `estrellas_Producto`) VALUES
-(1, 'Halo Reach', 'Juega Halo jejeje', 2, 1200, 'haloreach.jpg', 4),
-(2, 'GTA V', 'Juega a disparar y a atropellar gente', 6, 2500, 'gtav.jpg', 5);
+INSERT INTO `producto` (`id_Producto`, `nombre_Producto`, `descripcion_Producto`, `stock_Producto`, `precioUnitario_Producto`, `imagen_Producto`, `estrellas_Producto`, `categoria_Producto`) VALUES
+(1, 'Halo Reach', 'Juega Halo jejeje', 2, 1200, 'haloreach.jpg', 4, 'Acción'),
+(2, 'GTA V', 'Juega a disparar y a atropellar gente', 6, 2500, 'gtav.jpg', 5, 'Rol');
 
 -- --------------------------------------------------------
 
