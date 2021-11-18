@@ -13,5 +13,7 @@
             include ("metodos.php");
             encabezado();
        ?>
+        
+        
     </body>
 </html>
