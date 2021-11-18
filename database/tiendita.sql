@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 03:02 AM
+-- Generation Time: Nov 18, 2021 at 04:45 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.3.29
 
@@ -44,6 +44,18 @@ CREATE TABLE `cliente` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cuentas`
+--
+
+CREATE TABLE `cuentas` (
+  `id_Cuenta` int(11) NOT NULL,
+  `nombre_Cuenta` varchar(255) NOT NULL,
+  `password_Cuenta` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `imagen`
 --
 
@@ -64,8 +76,18 @@ CREATE TABLE `producto` (
   `nombre_Producto` varchar(255) NOT NULL,
   `descripcion_Producto` varchar(255) NOT NULL,
   `stock_Producto` int(11) NOT NULL,
-  `precioUnitario_Producto` float NOT NULL
+  `precioUnitario_Producto` float NOT NULL,
+  `imagen_Producto` varchar(255) NOT NULL,
+  `estrellas_Producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `producto`
+--
+
+INSERT INTO `producto` (`id_Producto`, `nombre_Producto`, `descripcion_Producto`, `stock_Producto`, `precioUnitario_Producto`, `imagen_Producto`, `estrellas_Producto`) VALUES
+(1, 'Halo Reach', 'Juega Halo jejeje', 2, 1200, 'haloreach.jpg', 4),
+(2, 'GTA V', 'Juega a disparar y a atropellar gente', 6, 2500, 'gtav.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -115,6 +137,12 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_Cliente`);
 
 --
+-- Indexes for table `cuentas`
+--
+ALTER TABLE `cuentas`
+  ADD PRIMARY KEY (`id_Cuenta`);
+
+--
 -- Indexes for table `imagen`
 --
 ALTER TABLE `imagen`
@@ -160,6 +188,12 @@ ALTER TABLE `cliente`
   MODIFY `id_Cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `cuentas`
+--
+ALTER TABLE `cuentas`
+  MODIFY `id_Cuenta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `imagen`
 --
 ALTER TABLE `imagen`
@@ -169,7 +203,7 @@ ALTER TABLE `imagen`
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `resena`
