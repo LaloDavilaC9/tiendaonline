@@ -63,7 +63,20 @@
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
 }
-
+div#banner{
+    background-position: center;
+    border: 0cm;
+    align-items: center;
+    width: 100%;
+    height: 1080px;
+}
+img#img_banner{
+    display: block;
+    margin: auto;
+    border-radius: 50px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
 .camposDesign{
     border: 12;
     padding: 5px 15px;

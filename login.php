@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
-    <title>OVERTHINKING LOGIN</title>
+    <title>HEXAGON GAMES LOGIN</title>
 </head>
 
 <body style="background-color: #572364; overflow:hidden;">
@@ -60,7 +60,7 @@
                                         </form>
                                     </div>
                                     <!--Permitimos que se navegue por la pagina pero sin crear una sesion.-->
-                                    <p>¿No tienes una cuenta? <a href="paginaPrincipal.php">Registrarse</a>
+                                    <p>¿No tienes una cuenta? <a href="crearCuenta.php">Registrarse</a>
                                         <br><br><br><br><br>
                                     </p>
                                 </div>
