@@ -9,7 +9,7 @@
     <title>HEXAGON GAMES LOGIN</title>
 </head>
 
-<body style="background-color: #572364; overflow:hidden;">
+<body style="background-color: black; overflow:hidden;">
     <div id="bodyLogin"> 
     <TABLE class="estandarTablaDesign" CELLSPACING=0 CELLPADDING=7>
             <TR>
