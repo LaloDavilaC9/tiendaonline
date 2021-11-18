@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 08:13 PM
+-- Generation Time: Nov 18, 2021 at 03:02 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.3.29
 
@@ -36,7 +36,9 @@ CREATE TABLE `cliente` (
   `calle_Cliente` varchar(255) NOT NULL,
   `noCalle_Cliente` int(11) NOT NULL,
   `cPostal_Cliente` int(11) NOT NULL,
-  `tarjeta_Cliente` int(11) NOT NULL
+  `tarjeta_Cliente` int(11) NOT NULL,
+  `colonia_Cliente` varchar(255) NOT NULL,
+  `gusto_Cliente` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,10 +96,10 @@ CREATE TABLE `venta` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `venta-producto`
+-- Table structure for table `venta_producto`
 --
 
-CREATE TABLE `venta-producto` (
+CREATE TABLE `venta_producto` (
   `id_Venta` int(11) NOT NULL,
   `id_Producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -116,7 +118,8 @@ ALTER TABLE `cliente`
 -- Indexes for table `imagen`
 --
 ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`id_Imagen`);
+  ADD PRIMARY KEY (`id_Imagen`),
+  ADD KEY `id_Producto` (`id_Producto`);
 
 --
 -- Indexes for table `producto`
@@ -128,13 +131,23 @@ ALTER TABLE `producto`
 -- Indexes for table `resena`
 --
 ALTER TABLE `resena`
-  ADD PRIMARY KEY (`id_Resena`);
+  ADD PRIMARY KEY (`id_Resena`),
+  ADD KEY `id_Producto` (`id_Producto`),
+  ADD KEY `id_Cliente` (`id_Cliente`);
 
 --
 -- Indexes for table `venta`
 --
 ALTER TABLE `venta`
-  ADD PRIMARY KEY (`id_Venta`);
+  ADD PRIMARY KEY (`id_Venta`),
+  ADD KEY `id_Cliente` (`id_Cliente`);
+
+--
+-- Indexes for table `venta_producto`
+--
+ALTER TABLE `venta_producto`
+  ADD KEY `id_Venta` (`id_Venta`),
+  ADD KEY `id_Producto` (`id_Producto`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -169,6 +182,36 @@ ALTER TABLE `resena`
 --
 ALTER TABLE `venta`
   MODIFY `id_Venta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_Producto`) REFERENCES `producto` (`id_Producto`);
+
+--
+-- Constraints for table `resena`
+--
+ALTER TABLE `resena`
+  ADD CONSTRAINT `resena_ibfk_1` FOREIGN KEY (`id_Producto`) REFERENCES `producto` (`id_Producto`),
+  ADD CONSTRAINT `resena_ibfk_2` FOREIGN KEY (`id_Cliente`) REFERENCES `cliente` (`id_Cliente`);
+
+--
+-- Constraints for table `venta`
+--
+ALTER TABLE `venta`
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_Cliente`) REFERENCES `cliente` (`id_Cliente`);
+
+--
+-- Constraints for table `venta_producto`
+--
+ALTER TABLE `venta_producto`
+  ADD CONSTRAINT `venta_producto_ibfk_1` FOREIGN KEY (`id_Venta`) REFERENCES `venta` (`id_Venta`),
+  ADD CONSTRAINT `venta_producto_ibfk_2` FOREIGN KEY (`id_Producto`) REFERENCES `producto` (`id_Producto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
