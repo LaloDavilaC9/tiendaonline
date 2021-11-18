@@ -2,20 +2,21 @@
     session_unset();
     //session_start();
     $_SESSION['login']="";
-    $_SESSION['id']=2;
-
+    $_SESSION['carrito'][0] = 1;
+    $_SESSION['carrito'][1] = 2;
 ?>
-
 <html>
     <head>
-        <title>Producto</title>
+        <title>Carrito</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
     <body>
         <?php
             include ("metodos.php");
             encabezado();
-            generarProducto($_SESSION['id']);
+            foreach($_SESSION['carrito'] as $i){
+                itemCarrito($i);
+            }
         ?>
         
         
