@@ -13,7 +13,7 @@
 </head>
 
 <body style="background-color: black; overflow:hidden;">
-    <div id="bodyLogin"> 
+    <div id="bodyLogin">
     <TABLE class="estandarTablaDesign" CELLSPACING=0 CELLPADDING=7>
             <TR>
                 <TD> <!--Esto se realizo para dar formato y diseño a la pagina-->
