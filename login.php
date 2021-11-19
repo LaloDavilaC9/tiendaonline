@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+?>
 <html lang="en">
 
 <head>
@@ -56,7 +59,7 @@
                                         <form action="verificarSesion.php" method="post">
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Usuario: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/contrasena.png" ALT="IMAGEN NO DISPONIBLE"> Contraseña: <input class="camposDesign" type="password" name="contrasenia" required><br><br></h3>
-                                            <input class="botonLoginDesign" type="submit" value="Iniciar sesión">
+                                            <input class="botonLoginDesign" type="button" value="Iniciar sesión" onclick="cambio(this.form);">
                                         </form>
                                     </div>
                                     <!--Permitimos que se navegue por la pagina pero sin crear una sesion.-->
@@ -74,5 +77,21 @@
             </TR>
     </TABLE>
     </div>
+    <script language="JavaScript">
+        function alerta(){ </script>
+            <?php
+                if($_SESSION['primeraVez']==1){
+                    if($_SESSION['creacionExitosa']){
+                        echo"<script language=JavaScript> alert ('Creacion de cuenta exitosa.'); </script>";
+                    }else{
+                        echo"<script language=JavaScript> alert ('Error al crear cuenta.'); </script>";
+                    }
+                }
+            ?>
+        <script language="JavaScript"> }
+    </script>
+    <script language="JavaScript">
+        alerta();
+    </script>
 </body>
 </html>

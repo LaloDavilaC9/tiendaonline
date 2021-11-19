@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,11 +26,13 @@
                 }
             }
             if (form.confContrasenia.value!=form.contrasenia.value) {
-                alert("Las contraseñas no coinciden, asegurate de haberlas escrito correctamente")
-                document.form.confContrasenia.focus()
-                correcto=false //No submit.
+                alert("Las contraseñas no coinciden, asegurate de haberlas escrito correctamente");
+                document.form.confContrasenia.focus();
+                correcto=false; //No submit.
             }
-            if (correcto ==true) {formulario.submit();}
+            if (correcto ==true) {
+                formulario.submit();
+            }
         }
     </script>
 </head>
@@ -49,7 +54,7 @@
                                     <div>
                                         <!--Creamos el form que captura los datos de inicios sesion y los manda a-->
                                         <!--otra pagina que valida que sean correctos los datos.-->
-                                        <form name="form" action="verificarSesion.php" method="post">
+                                        <form name="form" action="crearCuentaBDD.php" method="post">
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido paterno: <input class="camposDesign" type="text" name="apellidoP" required>&nbsp&nbsp&nbsp
                                             <IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido materno: <input class="camposDesign" type="text" name="apellidoM" required><br><br></h3>
@@ -59,12 +64,12 @@
                                             <br><br><hr><br><br>
                                             <h3><IMG SRC="Recursos/iconos/lugar.png" ALT="IMAGEN NO DISPONIBLE"> Ciudad: <input class="camposDesign" type="text" name="ciudad" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/calle.png" ALT="IMAGEN NO DISPONIBLE"> Calle: <input class="camposDesign" type="text" name="calle" required><br><br></h3>
-                                            <h3><IMG SRC="Recursos/iconos/numero.png" ALT="IMAGEN NO DISPONIBLE"> No. Calle: <input class="camposDesign" type="text" name="noCalle" required><br><br></h3>
+                                            <h3><IMG SRC="Recursos/iconos/numero.png" ALT="IMAGEN NO DISPONIBLE"> No. Calle: <input class="camposDesign" type="number" name="noCalle" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/colonia.png" ALT="IMAGEN NO DISPONIBLE"> Colonia: <input class="camposDesign" type="text" name="colonia" required><br><br></h3>
-                                            <h3><IMG SRC="Recursos/iconos/codigoPostal.png" ALT="IMAGEN NO DISPONIBLE"> Codigo postal: <input class="camposDesign" type="text" name="CP" required><br><br></h3>
+                                            <h3><IMG SRC="Recursos/iconos/codigoPostal.png" ALT="IMAGEN NO DISPONIBLE"> Codigo postal: <input class="camposDesign" type="number" name="CP" required><br><br></h3>
                                             <br><br><hr>
                                             <br><br>
-                                            <h3><IMG SRC="Recursos/iconos/tarjeta.png" ALT="IMAGEN NO DISPONIBLE"> Numero de tarjeta: <input class="camposDesign" type="text" name="NoTarjeta" required><br><br></h3>
+                                            <h3><IMG SRC="Recursos/iconos/tarjeta.png" ALT="IMAGEN NO DISPONIBLE"> Numero de tarjeta: <input class="camposDesign" type="number" name="NoTarjeta" required><br><br></h3>
                                             <br><br><hr><br><br>
                                             <h3><IMG SRC="Recursos/iconos/corazon.png" ALT="IMAGEN NO DISPONIBLE"> Categoria favorita:
                                             <select class="camposDesign" name="categoria" size="1">
