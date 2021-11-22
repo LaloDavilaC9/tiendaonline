@@ -59,7 +59,7 @@
                                         <form action="verificarSesion.php" method="post">
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Usuario: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/contrasena.png" ALT="IMAGEN NO DISPONIBLE"> Contraseña: <input class="camposDesign" type="password" name="contrasenia" required><br><br></h3>
-                                            <input class="botonLoginDesign" type="button" value="Iniciar sesión" onclick="cambio(this.form);">
+                                            <input class="botonLoginDesign" type="submit" value="Iniciar sesión">
                                         </form>
                                     </div>
                                     <!--Permitimos que se navegue por la pagina pero sin crear una sesion.-->
