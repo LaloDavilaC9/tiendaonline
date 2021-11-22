@@ -1,0 +1,40 @@
+.tabla-c-bordes{
+    background-image: url(../Recursos/iconos/fondoLogin.jpg);
+    position: absolute;
+    border-collapse: separate;
+    border-spacing: 10;
+    border: 1px solid #34bca8;
+    border-radius: 13px;
+    -moz-border-radius: 20px;
+    padding: 5px;
+    color: white;
+    font-family: 'calibri';
+    font-size: 15pt;
+}
+.tabla-c-bordes h4{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.tabla-c-bordes a{
+    color: white;
+    text-decoration: none;
+}
+.tabla-c-bordes a:hover{
+    color: white;
+    text-decoration: underline;
+    font-size: 16.5pt;
+}
+.tabla-c-bordes2{
+    background-image: url(../Recursos/iconos/fondoLogin.jpg);
+    position: absolute;
+    border-collapse: separate;
+    border-spacing: 10;
+    border-radius: 10px;
+    -moz-border-radius: 20px;
+    padding: 5px;
+    color: white;
+    font-family: "Benton Sans", sans-serif;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 7px 13px 37px black;
+}

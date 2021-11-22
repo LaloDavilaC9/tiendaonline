@@ -16,7 +16,7 @@
         <title>Carrito</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
-    <body>
+    <body class="fondoCarrito">
         <?php
             include ("metodos.php");
             encabezado();
@@ -24,7 +24,5 @@
                 itemCarrito($i);
             }
         ?>
-        
-        
     </body>
 </html>
