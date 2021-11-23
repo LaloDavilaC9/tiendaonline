@@ -11,10 +11,11 @@
         <title>Producto</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
-    <body>
+    <body style="background-color:black">
         <?php
             include ("metodos.php");
             encabezado();
+            echo"<br><br><br><br><br>";
             generarProducto($_SESSION['id']);
         ?>
         

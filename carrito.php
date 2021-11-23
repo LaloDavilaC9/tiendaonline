@@ -16,10 +16,11 @@
         <title>Carrito</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
-    <body class="fondoCarrito">
+    <body class="fondoCarrito" style="overflow-x: hidden;">
         <?php
             include ("metodos.php");
             encabezado();
+            echo"<br><br><br><br><br>";
             foreach($_SESSION['carrito'] as $i){
                 itemCarrito($i);
             }
