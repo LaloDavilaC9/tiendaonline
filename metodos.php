@@ -108,9 +108,7 @@
                 }
                 //mysqli_stmt_close($stmt);
                mysqli_close($conexion);
-
             }
-
              function generarProducto($i){
                 $conexion = conectarMysql();
                 if(!$conexion){
@@ -136,9 +134,7 @@
                         </p>";
                         echo " <div id='estrellas'>";
                         for($j=0;$j<$row['estrellas_Producto'];$j++){
-
                             echo"<img src='Recursos/iconos/estrella.png'>";
-
                         }
                         echo " </div><button><img src='Recursos/iconos/carrito.PNG'></button>";
                     }
