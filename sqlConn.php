@@ -4,7 +4,7 @@
         $servername = "localhost";
         $database = "tiendita";
         $username = "root";
-        $password = "Cruzazul1231";
+        $password = "";
 
         //Crear la conexion.
         $conn = mysqli_connect($servername, $username, $password, $database);

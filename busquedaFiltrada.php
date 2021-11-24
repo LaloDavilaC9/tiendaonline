@@ -3,16 +3,15 @@
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="./estilos/estilo_tabla.css">
+        <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
     <body>
         <?php
-
             function conectarMysql(){
                 $servername = "Localhost";
                 $database = "tiendita";
                 $username = "root";
                 $password = "";
-
                 $conn = mysqli_connect($servername,$username,$password,$database);
                 if(!$conn){
                     die("ERROR, LA CONEXIÓN NO SE REALIZÓ CORRECTAMENTE ". mysqli_connect_error());
@@ -48,7 +47,7 @@
                                 <h3><a href='carrito.php'>Perfil</a></h3>
                             </TD>
                             <TD>
-                                <form action='busquedaFiltradaBDD.php' method='post'>
+                                <form action='verificarSesion.php' method='post'>
                                     <TABLE>
                                         <TR>
                                             <TD style='color: white; font-size: 22px;'>

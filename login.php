@@ -2,7 +2,7 @@
 <?php
     session_start();
 ?>
-<html lang="en">
+<html lang="en"  style="background-color: black;">
 
 <head>
     <meta charset="UTF-8">

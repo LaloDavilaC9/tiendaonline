@@ -20,7 +20,7 @@
         <?php
             include ("metodos.php");
             encabezado();
-            echo"<br><br><br><br><br>";
+            echo"<br><br><br><br><br><br><br><br>";
             foreach($_SESSION['carrito'] as $i){
                 itemCarrito($i);
             }

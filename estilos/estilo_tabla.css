@@ -22,12 +22,13 @@
 .tabla-c-bordes a:hover{
     color: white;
     text-decoration: underline;
-    font-size: 16.5pt;
+    font-size: 18.5pt;
 }
 .tabla-c-bordes2{
     background-image: url(../Recursos/iconos/fondoLogin.jpg);
     border-collapse: separate;
     border-spacing: 10;
+    border: 1px solid #34bca8;
     border-radius: 10px;
     -moz-border-radius: 20px;
     padding: 5px;
