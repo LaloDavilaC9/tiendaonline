@@ -28,7 +28,7 @@
                         $_SESSION['admin'] = 0;//Guardamos en una variable de sesion si es o no admin.
                     }
                 }
-                header('Location: paginaPrincipal.php');
+                header('Location: datosUsuarios.php');
             }else{
                 $query = mysqli_query($conexion,"SELECT * FROM cuentas WHERE nombre_Cuenta = '$usuario'");
                 $aux =mysqli_num_rows($query);
@@ -41,7 +41,7 @@
                             $_SESSION['admin'] = 1;//Guardamos en una variable de sesion si es o no admin.
                         }
                     }
-                    header('Location: paginaPrincipal.php');
+                    header('Location: datosUsuarios.php');
                 }else{
                     header('Location: login.php');
                 }

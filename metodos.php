@@ -34,28 +34,52 @@
                             <TD width=25% ALIGN=left>
                                 <h3>HEXAGON <br> GAMES<h3>
                             </TD>
-                            <TD width=10% ALIGN=center>
+                            <TD width=10% ALIGN=left>
                                 <h3><a href='carrito.php'>Inicio</a></h3>
                             </TD>
                             </TD>
-                            <TD width=5%>
-                                <h3><a href='carrito.php'>Categorías</a></h3>
-                            </TD>
-                            <TD width=7% ALIGN=left>
+                            <TD width=7% ALIGN=center>
                                 <h3><a href='carrito.php'>Carrito</a></h3>
                             </TD>
-                            <TD width=25% ALIGN=left>
+                            <TD width=25% ALIGN=center>
                                 <h3><a href='carrito.php'>Perfil</a></h3>
+                            </TD>
+                            <TD width=25% ALIGN=left>
+                                <h3><a href='cerrarSesion.php'>Cerrar sesión</a></h3>
                             </TD>
                             <TD>
                                 <form action='busquedaFiltradaBDD.php' method='post'>
                                     <TABLE>
                                         <TR>
                                             <TD style='color: white; font-size: 22px;'>
-                                                <b>Usuario:</b>
+                                                <b>Buscar:</b>
                                             </TD>
                                             <TD>
                                                 <input class='camposBusquedaDesign' type='text' name='busqueda' required>
+                                            </TD>
+                                            <TD>
+                                                <input class='botonBusquedaDesign' type='submit' value=''>
+                                            </TD>
+                                        </TR>
+                                    </TABLE>
+                                </form>
+                            </TD>
+                            <TD>
+                                <form action='busquedaFiltradaPorCategoriaBDD.php' method='post'>
+                                    <TABLE>
+                                        <TR>
+                                            <TD style='color: white; font-size: 22px;'>
+                                                <b>Categorias:</b>
+                                            </TD>
+                                            <TD>
+                                                <select class='camposBusquedaDesign' name='categoria' size='1'>
+                                                    <option>Acción</option>
+                                                    <option>Rol</option>
+                                                    <option>Estrategia</option>
+                                                    <option>Aventura</option>
+                                                    <option>Simulación</option>
+                                                    <option>Deportes</option>
+                                                </select>
                                             </TD>
                                             <TD>
                                                 <input class='botonBusquedaDesign' type='submit' value=''>

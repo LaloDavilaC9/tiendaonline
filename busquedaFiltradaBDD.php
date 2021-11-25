@@ -29,43 +29,43 @@
                 while($row = $result->fetch_assoc()){
                     echo "<table align=center class='tabla-c-bordes2' width=97%>"
                         ."<tr>"
-                        ."<td align='center'>"
-                        ."<H3>"
-                        ."$".$row['precioUnitario_Producto']
-                        ."</H3>"
-                        ."</td>"
-                        ."<td align='left'>"
-                        ."<table align=center class='bordes3' width=99% style='background-color:RGBA(0,0,0,0.3)'>"
-                        ."<tr>"
-                        ."<td style='border-radius: 3px;' align='center'>"
-                        ."<H3>"
-                        ."<a href='producto.php'>"
-                        .$row['nombre_Producto']
-                        ."</a>"
-                        ."</H3>"
+                            ."<td align='center'>"
+                                ."<H3>"
+                                ."$".$row['precioUnitario_Producto']
+                                ."</H3>"
+                            ."</td>"
+                            ."<td align='left'>"
+                            ."<table align=center class='bordes3' width=99% style='background-color:RGBA(0,0,0,0.3)'>"
+                                ."<tr>"
+                                    ."<td style='border-radius: 3px;' align='center'>"
+                                        ."<H3>"
+                                        ."<a href='producto.php'>"
+                                        .$row['nombre_Producto']
+                                        ."</a>"
+                                        ."</H3>"
+                                    ."</td>"
+                                ."</tr>"
+                            ."</table>"
                         ."</td>"
                         ."</tr>"
-                        ."</table>"
-                        ."</td>"
-                        ."</tr>"
                         ."<tr>"
-                        ."<td width=1%>"
-                        ."<img src='Recursos/fotosProductos/".$row['imagen_Producto']."' width=200>"
-                        ."</td>"
+                            ."<td width=1%>"
+                                ."<img src='Recursos/fotosProductos/".$row['imagen_Producto']."' width=200>"
+                            ."</td>"
                         ."<td align='left'>"
                         ."<table align=center class='bordes3' width=99% style='background-color:RGBA(0,0,0,0.5)'>"
-                        ."<tr>"
-                        ."<td style='border-radius: 3px;' align='center'>"
-                        ."<H3>"
-                        .$row['descripcion_Producto']
-                        ."</H3>"
-                        ."</td>"
-                        ."</tr>"
+                            ."<tr>"
+                                ."<td style='border-radius: 3px;' align='center'>"
+                                ."<H3>"
+                                .$row['descripcion_Producto']
+                                ."</H3>"
+                                ."</td>"
+                            ."</tr>"
                         ."</table>"
                         ."</td>"
                         ."</tr>"
-                        ."</table>"
-                        ."<br><hr width=97%><br>";
+                    ."</table>"
+                    ."<br><hr width=97%><br>";
                 }
             }
             else{
@@ -75,5 +75,4 @@
             mysqli_close($conexion);
     ?>
 </body>
-
 </html>
