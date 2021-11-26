@@ -16,6 +16,9 @@
         encabezado();
         echo"<br><br><br><br><br><br><br><br>";
         $busqueda=$_POST['categoria'];
+        $sql = "SELECT * FROM producto WHERE categoria_Producto = '$busqueda'";
+        paginaPrincipal($sql);
+        /*$busqueda=$_POST['categoria'];
             $conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";
@@ -73,7 +76,7 @@
                 echo "0 resultados";
             }
             //mysqli_stmt_close($stmt);
-            mysqli_close($conexion);
+            mysqli_close($conexion);*/
     ?>
 </body>
 </html>

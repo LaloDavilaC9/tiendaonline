@@ -26,6 +26,7 @@
                         $_SESSION['autentif']=TRUE;
                         $_SESSION['user']=$usuario;//Guardamos en una variable se sesion el usuario que accedió.
                         $_SESSION['admin'] = 0;//Guardamos en una variable de sesion si es o no admin.
+                        $_SESSION['idCliente'] = $pass['id_Cliente']; //Guardamos en una variable de sesión el ID del usuario
                     }
                 }
                 header('Location: datosUsuarios.php');

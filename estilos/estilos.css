@@ -170,3 +170,35 @@ img#img_banner2{
     height: 100%;
     position: absolute;
 }
+
+.anadirCarrito{
+    font-size: 10px;
+    background-color: black;
+    border-radius:10px;
+    outline:none;
+    background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -o-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+}
+
+.btnQuitarDelCarrito{
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    border-radius:10px;
+    outline:none;
+    background-image: -webkit-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -moz-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -ms-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: -o-linear-gradient(top, #eb94d0, #2079b0);
+    background-image: linear-gradient(to bottom, #eb94d0, #2079b0);
+}
+
+.btnQuitarDelCarrito:hover{
+    cursor: pointer;
+}
+.btnFinalizarCompra{
+     cursor: pointer;
+}

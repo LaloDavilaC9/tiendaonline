@@ -1,15 +1,7 @@
 <?php
-    session_unset();
     //session_start();
-    $_SESSION['login']="";
-    $_SESSION['carrito'][0] = 1;
-    $_SESSION['carrito'][1] = 2;
-    $_SESSION['carrito'][2] = 3;
-    $_SESSION['carrito'][3] = 4;
-    $_SESSION['carrito'][4] = 5;
-    $_SESSION['carrito'][5] = 6;
-    $_SESSION['carrito'][6] = 7;
-    $_SESSION['carrito'][7] = 8;
+    //$_SESSION['carrito'][0] = 1;
+    //$_SESSION['carrito'][1] = 2;
 ?>
 <html>
     <head>
@@ -32,9 +24,16 @@
                 . "</tr>"
             . "</table>";
             echo "<br>";
-            foreach($_SESSION['carrito'] as $i){
+            $x=0;
+            totalCarrito();
+            foreach(array_reverse($_SESSION['carrito']) as $i){
                 itemCarrito($i);
+                $x++;
             }
+            if($x==0){
+                echo "<p style='color:white;'> CARRITO VACÍO</p>";
+            }
+       
         ?>
     </body>
 </html>

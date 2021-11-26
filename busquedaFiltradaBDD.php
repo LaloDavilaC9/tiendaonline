@@ -16,7 +16,12 @@
         encabezado();
         echo"<br><br><br><br><br><br><br><br>";
         $busqueda=$_POST['busqueda'];
-            $conexion = conectarMysql();
+        
+        $sql = "SELECT * FROM producto WHERE nombre_Producto LIKE '%$busqueda%'";
+        paginaPrincipal($sql)
+        
+        
+            /*$conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";
             }
@@ -73,7 +78,7 @@
                 echo "0 resultados";
             }
             //mysqli_stmt_close($stmt);
-            mysqli_close($conexion);
+            mysqli_close($conexion);*/
     ?>
 </body>
 </html>

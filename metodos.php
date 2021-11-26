@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <html style="background-color: black;">
     <head>
         <meta charset="UTF-8">
@@ -92,13 +96,15 @@
                     </TABLE>";
             }
             
-            function paginaPrincipal(){
+            function paginaPrincipal($sql=""){
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
                 }
                 else{
-                    $sql = "SELECT * FROM producto WHERE estrellas_Producto='5'";
+                    if($sql==""){
+                        $sql = "SELECT * FROM producto WHERE estrellas_Producto='5'";
+                    }
                     $result = $conexion->query($sql);
                 }
                 echo "<br><hr width=97%><br>";
@@ -140,8 +146,18 @@
                                                 ."</td>"
                                             ."</tr>"
                                         ."</table>"
-                                    ."</td>"
-                                ."</tr>"
+                                    ."</td>";
+                                 if($row['stock_Producto']!=0){
+                                     echo "<td align'right'>"
+                                    . "<form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
+                                    . "<input name='idProducto' id='idProducto' type='hidden' value='".$id."'>"
+                                    . "<input type='image' src='Recursos/iconos/carrito.png' class='anadirCarrito'>"
+                                    . "</form></td>";
+                                 }
+                                 else{
+                                     echo "<br><td>No disponible</td>";
+                                 }
+                                echo "</tr>"
                             ."</table>"
                         ."<br>";
                         echo "<hr width=97%><br>";
@@ -199,8 +215,10 @@
                                                     ."<H3>"
                                                     .$row['descripcion_Producto']
                                                     ."</H3>"
-                                                ."</td>"
+                                                ."</td>".
+                                                "<td><form method='POST' action='procesamientoFormularios/eliminarItemCarrito.php' ><input type='hidden' name='idProducto' id='idProducto' value='".$id."'><input class='btnQuitarDelCarrito' type='submit' value='Quitar del carrito'></form></td>"
                                             ."</tr>"
+                                           
                                         ."</table>"
                                     ."</td>"
                                 ."</tr>"
@@ -209,7 +227,7 @@
                     }
                 }
                 else{
-                    echo "0 resultados";
+                    echo "<p style='color:white;'> 0 resultados</p>";
                 }
                 //mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
@@ -226,6 +244,7 @@
                 }
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
+                        
                         $nombre = $row['nombre_Producto'];
                         echo "<br><br><br><p align='center'><img src='Recursos/fotosProductos/".$row['imagen_Producto']."' alt='IMAGEN NO DISPONIBLE'></p>";
                         echo "<TABLE class='estandarTablaDesign2' CELLSPACING=0 CELLPADDING=7>"
@@ -243,7 +262,7 @@
                                                         ."<div>"
                                                             ."<!--Creamos el form que captura los datos de inicios sesion y los manda a-->"
                                                             ."<!--otra pagina que valida que sean correctos los datos.-->"
-                                                            ."<form name='form' action='crearCuentaBDD.php' method='post'>"
+                                                            .""
                                                                 ."<h2>Descripción:</h2>"
                                                                 ."<h3><p>".$row['descripcion_Producto']."</p></h3>"
                                                                 ."<br><br><hr><br><br>"
@@ -257,11 +276,18 @@
                                                                     echo"<img src='Recursos/iconos/estrella.png'>";
                                                                 }
                                                                 echo "<br><br><hr><br>"
-                                                                ."<img src='Recursos/iconos/carrito.PNG'>"
-                                                                ." </div><button class='botonDesign'>Añadir al carrito</button>"
-                                                                ."<br><br><hr><br><br>"
-                                                            ."</form>"
-                                                        ."</div>"
+                                                                
+                                                                ." </div>";
+                                                               if($row['stock_Producto']){
+                                                                    echo "<img src='Recursos/iconos/carrito.PNG'><form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
+                                                                    . "<input name='idProducto' id='idProducto' type='hidden' value='".$i."'>"
+                                                                    . "<input type='submit' value='Añadir al carrito' class='botonDesign'>"
+                                                                    ."<br><br><hr><br><br>"
+                                                                    ."</form>";
+                                                               }else{
+                                                                   echo "<h3 style='color:red;'>Stock no disponible</h3>";
+                                                               }
+                                                        echo "</div>"
                                                     ."</div>"
                                                 ."</TD>"
                                                 ."<TD>"
@@ -281,6 +307,109 @@
                 //mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
             }
+            
+            function totalCarrito(){
+                $conexion = conectarMysql();
+                if(!$conexion){
+                    echo "ERROR";
+                }
+                else{
+                   $precio =0;
+                        foreach(array_reverse($_SESSION['carrito']) as $i){
+                         $sql = "SELECT precioUnitario_Producto FROM producto WHERE id_Producto = ".$i;
+                         $result = $conexion->query($sql);
+                            while($row = $result->fetch_assoc()){
+                                $precio += $row['precioUnitario_Producto'];
+                           }
+                        }
+                        if($precio!=0){
+                            echo "<p style='color:white;'>TOTAL A PAGAR: $".$precio.".00 MXN + ENVÍO GRATIS</p><br>";
+                            echo "<form method='POST' action='generarTicket.php'><input type='hidden' name='precio' value='".$precio."'><input type='submit' value='Finalizar Compra' class='btnFinalizarCompra'></form>";
+                        }
+                   
+                    
+                }
+                mysqli_close($conexion);
+            }
+            
+            function imprimirDatosCliente(){
+                $conexion = conectarMysql();
+                if(!$conexion){
+                    echo "ERROR";
+                }
+                else{
+                    $sql = "SELECT * FROM cliente WHERE id_Cliente=".$_SESSION['idCliente'];
+                    $result = $conexion->query($sql);
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            echo "<p style='color:white;'>Nombre del cliente: ".$row['nombre_Cliente']."<br>"
+                            .    "Apellidos: ".$row['apPaterno_Cliente']." ".$row['apMaterno_Cliente']."<br>"
+                            .    "Ciudad: ".$row['ciudad_Cliente']."<br>"
+                            .    "Colonia: ".$row['colonia_Cliente']."<br>"
+                            .    "Calle: ".$row['calle_Cliente']."<br>"
+                            .    "Número de calle: ".$row['noCalle_Cliente']."<br>"
+                            .    "Código postal: ".$row['cPostal_Cliente']."<br>"
+                            .    "Número de tarjeta: ".$row['tarjeta_Cliente']."<br>"
+                                    . "</p>";
+                        }
+                    }
+                }
+                mysqli_close($conexion);
+            }
+            
+            function actualizarStock(){
+                 $conexion = conectarMysql();
+                 $stock=0;
+              foreach(array_reverse($_SESSION['carrito']) as $i){
+                  //Se calcula el stock actual 
+                  $sql = "SELECT stock_Producto FROM producto WHERE id_Producto=".$i;
+                  $result = $conexion->query($sql);
+                  while($row = $result->fetch_assoc()){
+                      $stock=$row['stock_Producto'];
+                  }
+                  
+                  //Se hace el update del stock
+                   $sql = "UPDATE producto SET stock_Producto=".($stock-1)." WHERE id_Producto=".$i;
+                   mysqli_query($conexion, $sql);
+                   
+                   $stock = 0;
+              }
+            }
+            
+            
+            function imprimirListaCompra(){
+                 $conexion = conectarMysql();
+                if(!$conexion){
+                    echo "ERROR";
+                }
+                else{
+                    echo "<table border='1' class='tablaLista'><tr>"
+                    . "<td>Producto</td>"
+                    . "<td>Precio Unitario</td>"        
+                    . "<td>Categoría</td>"       
+                            . "</tr>";
+                    foreach(array_reverse($_SESSION['carrito']) as $i){
+                         $sql = "SELECT nombre_Producto,precioUnitario_Producto, categoria_Producto FROM producto WHERE id_Producto = ".$i;
+                         $result = $conexion->query($sql);
+                            while($row = $result->fetch_assoc()){
+                                echo "<tr>"
+                               . "<td>".$row['nombre_Producto']."</td>"
+                               . "<td>".$row['precioUnitario_Producto']."</td>"
+                               . "<td>".$row['categoria_Producto']."</td>"
+                                        . "</tr>";
+                           }
+                    }
+                    echo "</table>";
+                  
+                }
+                 mysqli_close($conexion);
+            }
+            
+            function vaciarCarrito(){
+                unset($_SESSION['carrito']);
+                $_SESSION['carrito'] = array();
+            }
         ?>
+        
     </body>
 </html>

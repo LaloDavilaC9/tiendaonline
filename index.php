@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>¡Bienvenido a Blanco!</title>
+        <title>¡Bienvenido a Hexagon Games!</title>
     <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
 
     </head>
