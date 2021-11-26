@@ -79,6 +79,7 @@
                 if($result->num_rows > 0){
                     echo "<hr width=97%><br>";
                     while($row = $result->fetch_assoc()){
+                        $id = $row['id_Producto'];
                         echo "<table align=center class='tabla-c-bordes2' width=97%>"
                                 ."<tr>"
                                     ."<td align='center'>"
@@ -91,7 +92,7 @@
                                             ."<tr>"
                                                 ."<td style='border-radius: 3px;' align='center'>"
                                                     ."<H3>"
-                                                    ."<a href='producto.php'>"
+                                                    ."<a href='producto.php?id=$id'>"
                                                     .$row['nombre_Producto']
                                                     ."</a>"
                                                     ."</H3>"

@@ -21,6 +21,17 @@
             include ("metodos.php");
             encabezado();
             echo"<br><br><br><br><br><br><br><br>";
+            echo "<hr width=97%><br>";
+            echo "<table align=center class='tabla-c-bordes2' width=97%>"
+                . "<tr>"
+                    . "<td align='center'>"
+                        . "<H2>"
+                            . "CARRITO"
+                        . "</H2>"
+                    . "</td>"
+                . "</tr>"
+            . "</table>";
+            echo "<br>";
             foreach($_SESSION['carrito'] as $i){
                 itemCarrito($i);
             }

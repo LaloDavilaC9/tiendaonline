@@ -1,9 +1,5 @@
 <?php
-    session_unset();
-    //session_start();
-    $_SESSION['login']="";
-    $_SESSION['id']=2;
-
+    session_start();
 ?>
 
 <html>
@@ -13,12 +9,11 @@
     </head>
     <body style="background-color:black">
         <?php
+            $id = $_GET['id'];
             include ("metodos.php");
             encabezado();
             echo"<br><br><br><br><br>";
-            generarProducto($_SESSION['id']);
+            generarProducto($id);
         ?>
-        
-        
     </body>
 </html>
