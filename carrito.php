@@ -5,7 +5,7 @@
 ?>
 <html>
     <head>
-        <title>Carrito</title>
+        <title>Carrito hexagon games</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
     <body class="fondoCarrito" style="overflow-x: hidden;">
@@ -31,9 +31,15 @@
                 $x++;
             }
             if($x==0){
-                echo "<p style='color:white;'> CARRITO VACÍO</p>";
+                echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                        ."<TR>"
+                            ."<TD width=90%>"
+                                    ."<H3 style='color: white' align=center><u>CARRITO VACÍO</u></H3>"
+                                ."</TD>"
+                            ."</TR>"
+                    ."</TABLE>"
+                    ."<br>";
             }
-       
         ?>
     </body>
 </html>

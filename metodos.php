@@ -3,13 +3,15 @@
 ?>
 
 <html style="background-color: black;">
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" href="./estilos/estilo_tabla.css">
-    </head>
-    <body>
-        <?php
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./estilos/estilo_tabla.css">
+</head>
+
+<body>
+    <?php
 
             function conectarMysql(){
                 $servername = "Localhost";
@@ -95,7 +97,6 @@
                         </TR>
                     </TABLE>";
             }
-            
             function paginaPrincipal($sql=""){
                 $conexion = conectarMysql();
                 if(!$conexion){
@@ -147,16 +148,16 @@
                                             ."</tr>"
                                         ."</table>"
                                     ."</td>";
-                                 if($row['stock_Producto']!=0){
-                                     echo "<td align'right'>"
+                                if($row['stock_Producto']!=0){
+                                    echo "<td align'right'>"
                                     . "<form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
                                     . "<input name='idProducto' id='idProducto' type='hidden' value='".$id."'>"
                                     . "<input type='image' src='Recursos/iconos/carrito.png' class='anadirCarrito'>"
                                     . "</form></td>";
-                                 }
-                                 else{
-                                     echo "<br><td>No disponible</td>";
-                                 }
+                                }
+                                else{
+                                    echo "<br><td>No disponible</td>";
+                                }
                                 echo "</tr>"
                             ."</table>"
                         ."<br>";
@@ -169,7 +170,6 @@
                 //mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
             }
-            
             function itemCarrito($i){
                 $conexion = conectarMysql();
                 if(!$conexion){
@@ -218,7 +218,6 @@
                                                 ."</td>".
                                                 "<td><form method='POST' action='procesamientoFormularios/eliminarItemCarrito.php' ><input type='hidden' name='idProducto' id='idProducto' value='".$id."'><input class='btnQuitarDelCarrito' type='submit' value='Quitar del carrito'></form></td>"
                                             ."</tr>"
-                                           
                                         ."</table>"
                                     ."</td>"
                                 ."</tr>"
@@ -232,7 +231,6 @@
                 //mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
             }
-            
             function generarProducto($i){
                 $conexion = conectarMysql();
                 if(!$conexion){
@@ -244,7 +242,6 @@
                 }
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
-                        
                         $nombre = $row['nombre_Producto'];
                         echo "<br><br><br><p align='center'><img src='Recursos/fotosProductos/".$row['imagen_Producto']."' alt='IMAGEN NO DISPONIBLE'></p>";
                         echo "<TABLE class='estandarTablaDesign2' CELLSPACING=0 CELLPADDING=7>"
@@ -255,8 +252,8 @@
                                                 ."<TD width=100% align='center' class='formDesign' class='imagenLogin'>"
                                                     ."<div style='text-align: center;'>"
                                                         ."<br>"
-                                                        ."<div tabindex='0' id='inicio'><H2>" 
-                                                        .$row['nombre_Producto'] 
+                                                        ."<div tabindex='0' id='inicio'><H2>"
+                                                        .$row['nombre_Producto']
                                                         ."</H2></div>"
                                                         ."<HR><br><br></HR>"
                                                         ."<div>"
@@ -276,17 +273,16 @@
                                                                     echo"<img src='Recursos/iconos/estrella.png'>";
                                                                 }
                                                                 echo "<br><br><hr><br>"
-                                                                
                                                                 ." </div>";
-                                                               if($row['stock_Producto']){
+                                                                if($row['stock_Producto']){
                                                                     echo "<img src='Recursos/iconos/carrito.PNG'><form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
                                                                     . "<input name='idProducto' id='idProducto' type='hidden' value='".$i."'>"
                                                                     . "<input type='submit' value='Añadir al carrito' class='botonDesign'>"
                                                                     ."<br><br><hr><br><br>"
                                                                     ."</form>";
-                                                               }else{
-                                                                   echo "<h3 style='color:red;'>Stock no disponible</h3>";
-                                                               }
+                                                                }else{
+                                                                    echo "<h3 style='color:red;'>Stock no disponible</h3>";
+                                                                }
                                                         echo "</div>"
                                                     ."</div>"
                                                 ."</TD>"
@@ -303,35 +299,65 @@
                 else{
                     echo "0 resultados";
                 }
-                
                 //mysqli_stmt_close($stmt);
                 mysqli_close($conexion);
             }
-            
             function totalCarrito(){
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
                 }
                 else{
-                   $precio =0;
+                    if ($_SESSION['admin'] == 1) {
+                        $precio =0;
                         foreach(array_reverse($_SESSION['carrito']) as $i){
-                         $sql = "SELECT precioUnitario_Producto FROM producto WHERE id_Producto = ".$i;
-                         $result = $conexion->query($sql);
+                        $sql = "SELECT precioUnitario_Producto FROM producto WHERE id_Producto = ".$i;
+                        $result = $conexion->query($sql);
                             while($row = $result->fetch_assoc()){
                                 $precio += $row['precioUnitario_Producto'];
-                           }
+                            }
                         }
                         if($precio!=0){
-                            echo "<p style='color:white;'>TOTAL A PAGAR: $".$precio.".00 MXN + ENVÍO GRATIS</p><br>";
-                            echo "<form method='POST' action='generarTicket.php'><input type='hidden' name='precio' value='".$precio."'><input type='submit' value='Finalizar Compra' class='btnFinalizarCompra'></form>";
+                            echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                                ."<TR>"
+                                    ."<TD width=90%>"
+                                        ."<form method='POST' action='generarTicket.php'>"
+                                            ."<H3 style='color:white;' align=center>TOTAL A PAGAR: $".$precio.".00 MXN + ENVÍO GRATIS</H3><br>"
+                                            ."<input type='hidden' name='precio' value='".$precio."'>"
+                                            ."<H3 style='color: white' align=center><u>No puedes comprar productos con una cuenta administrador</u></H3>"
+                                        ."</form>"
+                                    ."</TD>"
+                                ."</TR>"
+                            ."</TABLE>"
+                            ."<br>";
                         }
-                   
-                    
+                    } else {
+                        $precio =0;
+                        foreach(array_reverse($_SESSION['carrito']) as $i){
+                        $sql = "SELECT precioUnitario_Producto FROM producto WHERE id_Producto = ".$i;
+                        $result = $conexion->query($sql);
+                            while($row = $result->fetch_assoc()){
+                                $precio += $row['precioUnitario_Producto'];
+                            }
+                        }
+                        if($precio!=0){
+                            echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                                ."<TR>"
+                                    ."<TD width=90%>"
+                                        ."<form method='POST' action='generarTicket.php' align=center>"
+                                            ."<H3 style='color:white;' align=center>TOTAL A PAGAR: $".$precio.".00 MXN + ENVÍO GRATIS</H3><br>"
+                                            ."<input type='hidden' name='precio' value='".$precio."'>"
+                                            ."<input align=center type='submit' value='Finalizar Compra' class='btnQuitarDelCarrito'>"
+                                        ."</form>"
+                                    ."</TD>"
+                                ."</TR>"
+                            ."</TABLE>"
+                            ."<br>";
+                        }
+                    }
                 }
                 mysqli_close($conexion);
             }
-            
             function imprimirDatosCliente(){
                 $conexion = conectarMysql();
                 if(!$conexion){
@@ -342,74 +368,92 @@
                     $result = $conexion->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
-                            echo "<p style='color:white;'>Nombre del cliente: ".$row['nombre_Cliente']."<br>"
-                            .    "Apellidos: ".$row['apPaterno_Cliente']." ".$row['apMaterno_Cliente']."<br>"
-                            .    "Ciudad: ".$row['ciudad_Cliente']."<br>"
-                            .    "Colonia: ".$row['colonia_Cliente']."<br>"
-                            .    "Calle: ".$row['calle_Cliente']."<br>"
-                            .    "Número de calle: ".$row['noCalle_Cliente']."<br>"
-                            .    "Código postal: ".$row['cPostal_Cliente']."<br>"
-                            .    "Número de tarjeta: ".$row['tarjeta_Cliente']."<br>"
-                                    . "</p>";
+                            echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                                ."<TR>"
+                                    ."<TD width=90%>"
+                                        ."<form name='form' action='crearCuentaAdminBDD.php' method='post' align=center>"
+                                            ."<h2>DATOS DEL CLIENTE<br></h2>"
+                                            ."<h3><u>Nombre del cliente:</u> ".$row['nombre_Cliente']."<br></h3>"
+                                            ."<h3><u>Apellidos:</u> ".$row['apPaterno_Cliente']."".$row['apMaterno_Cliente']."<br></h3>"
+                                            ."<h3><u>Ciudad:</u> ".$row['ciudad_Cliente']."<br></h3>"
+                                            ."<h3><u>Colonia:</u> ".$row['colonia_Cliente']."<br></h3>"
+                                            ."<h3><u>Calle:</u> ".$row['calle_Cliente']."<br></h3>"
+                                            ."<h3><u>Numero de calle:</u> ".$row['noCalle_Cliente']."<br></h3>"
+                                            ."<h3><u>Código postal:</u> ".$row['cPostal_Cliente']."<br></h3>"
+                                            ."<h3><u>Número de tarjeta:</u> ".$row['tarjeta_Cliente']."<br></h3>"
+                                            ."<br><br><hr><br><br>"
+                                        ."</form>"
+                                    ."</TD>"
+                                ."</TR>"
+                            ."</TABLE>"
+                            ."<br>";
                         }
                     }
                 }
                 mysqli_close($conexion);
             }
-            
             function actualizarStock(){
-                 $conexion = conectarMysql();
-                 $stock=0;
-              foreach(array_reverse($_SESSION['carrito']) as $i){
-                  //Se calcula el stock actual 
-                  $sql = "SELECT stock_Producto FROM producto WHERE id_Producto=".$i;
-                  $result = $conexion->query($sql);
-                  while($row = $result->fetch_assoc()){
-                      $stock=$row['stock_Producto'];
-                  }
-                  
+                $conexion = conectarMysql();
+                $stock=0;
+                foreach(array_reverse($_SESSION['carrito']) as $i){
+                  //Se calcula el stock actual
+                    $sql = "SELECT stock_Producto FROM producto WHERE id_Producto=".$i;
+                    $result = $conexion->query($sql);
+                    while($row = $result->fetch_assoc()){
+                        $stock=$row['stock_Producto'];
+                    }
                   //Se hace el update del stock
-                   $sql = "UPDATE producto SET stock_Producto=".($stock-1)." WHERE id_Producto=".$i;
-                   mysqli_query($conexion, $sql);
-                   
-                   $stock = 0;
-              }
+                    $sql = "UPDATE producto SET stock_Producto=".($stock-1)." WHERE id_Producto=".$i;
+                    mysqli_query($conexion, $sql);
+                    $stock = 0;
+                }
             }
-            
-            
             function imprimirListaCompra(){
-                 $conexion = conectarMysql();
+                    $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
                 }
                 else{
-                    echo "<table border='1' class='tablaLista'><tr>"
-                    . "<td>Producto</td>"
-                    . "<td>Precio Unitario</td>"        
-                    . "<td>Categoría</td>"       
-                            . "</tr>";
                     foreach(array_reverse($_SESSION['carrito']) as $i){
-                         $sql = "SELECT nombre_Producto,precioUnitario_Producto, categoria_Producto FROM producto WHERE id_Producto = ".$i;
-                         $result = $conexion->query($sql);
+                        $sql = "SELECT nombre_Producto,precioUnitario_Producto, categoria_Producto FROM producto WHERE id_Producto = ".$i;
+                        $result = $conexion->query($sql);
                             while($row = $result->fetch_assoc()){
-                                echo "<tr>"
-                               . "<td>".$row['nombre_Producto']."</td>"
-                               . "<td>".$row['precioUnitario_Producto']."</td>"
-                               . "<td>".$row['categoria_Producto']."</td>"
-                                        . "</tr>";
-                           }
+                                echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                                        ."<TR align=center>"
+                                            . "<td width=33%><h3>Producto</h3></td>"
+                                            . "<td width=33%><h3>Precio Unitario</h3></td>"
+                                            . "<td width=33%><h3>Categoría</h3></td>"
+                                        ."</TR>"
+                                        ."<TR align=center>"
+                                            ."<TD>"
+                                                ."<hr>"
+                                            ."</TD>"
+                                            ."<TD>"
+                                                ."<hr>"
+                                            ."</TD>"
+                                            ."<TD>"
+                                                ."<hr>"
+                                            ."</TD>"
+                                        ."</TR>"
+                                        ."<TR align=center>"
+                                            . "<td><h3>".$row['nombre_Producto']."</h3></td>"
+                                            . "<td><h3>$".$row['precioUnitario_Producto']."</h3></td>"
+                                            . "<td><h3>".$row['categoria_Producto']."</h3></td>"
+                                        ."</TR>"
+                                    ."</TABLE>"
+                                    ."<br>";
+                            }
                     }
                     echo "</table>";
-                  
                 }
-                 mysqli_close($conexion);
+                mysqli_close($conexion);
             }
-            
             function vaciarCarrito(){
                 unset($_SESSION['carrito']);
                 $_SESSION['carrito'] = array();
             }
         ?>
-        
-    </body>
+
+</body>
+
 </html>

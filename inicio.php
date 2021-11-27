@@ -9,11 +9,9 @@
         <title>INICIO</title>
     </head>
     <body>
-       <?php 
-            include ("metodos.php");
-            encabezado();
-       ?>
-        
-        
+    <?php
+        include ("metodos.php");
+        encabezado();
+    ?>
     </body>
 </html>

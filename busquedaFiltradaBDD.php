@@ -16,11 +16,8 @@
         encabezado();
         echo"<br><br><br><br><br><br><br><br>";
         $busqueda=$_POST['busqueda'];
-        
         $sql = "SELECT * FROM producto WHERE nombre_Producto LIKE '%$busqueda%'";
         paginaPrincipal($sql)
-        
-        
             /*$conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";

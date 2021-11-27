@@ -10,7 +10,7 @@
         <?php
             include ("metodos.php");
             encabezado();
-            echo"<br><br><br><br><br>";
+            echo"<br><br><br><br><br><br>";
             echo "<div id='banner2'>"
                 ."<br><br>"
                 ."<img src='Recursos/BANNER HEXAGON GAMES.jpg' id='img_banner2'>"

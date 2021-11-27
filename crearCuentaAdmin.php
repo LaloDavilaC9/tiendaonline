@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<?php
-    session_start();
-?>
-<html lang="en">
+<html lang="en" style="background-color: black;">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
-    <title>Crear cuenta administrador</title>
+    <title>Crear cuenta administrador en hexagon games</title>
     <script language="JavaScript">
         //Valide que se escriba la misma contraseña 2 veces.
         function valida(form) {
@@ -36,13 +33,18 @@
         }
     </script>
 </head>
-<body class="estandarTablaDesign">
+<body style="background-color: black;">
+    <?php
+        include ("metodos.php");
+        encabezado();
+    ?>
+    <br><br><br><br><br><br><br>
     <div id="banner">
         <br><br>
         <img src="Recursos/imagenCrearCuentaAdmin.jpg" id="img_banner">
     </div>
     <div id="bodyLogin">
-    <TABLE class="estandarTablaDesign" CELLSPACING=0 CELLPADDING=7>
+    <TABLE class="estandarTablaDesign2" CELLSPACING=0 CELLPADDING=7>
             <TR>
                 <TD width=100% align="center">
                     <TABlE>

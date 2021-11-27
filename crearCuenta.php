@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
-    <title>Crear cuenta</title>
+    <title>Crear cuenta en hexagon games</title>
     <script language="JavaScript">
         //Valide que se escriba la misma contraseña 2 veces.
         function valida(form) {
