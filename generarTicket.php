@@ -15,6 +15,7 @@
     <?php
         include("metodos.php");
         encabezado();
+        updateVenta();
         echo"<br><br><br><br><br><br><br>";
     ?>
     <?php

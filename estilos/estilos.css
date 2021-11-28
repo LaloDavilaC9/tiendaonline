@@ -203,3 +203,14 @@ img#img_banner2{
 .btnFinalizarCompra{
     cursor: pointer;
 }
+
+.linkRes{
+    color: violet;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+.linkRes:hover{
+    font-size:1.2em;
+    text-decoration: underline;
+}

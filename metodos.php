@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <html style="background-color: black;">
 
 <head>
@@ -272,6 +268,8 @@
                                                                 for($j=0;$j<$row['estrellas_Producto'];$j++){
                                                                     echo"<img src='Recursos/iconos/estrella.png'>";
                                                                 }
+                                                                echo "<br><br>";
+                                                                echo "<a href='resProducto.php?id=$i' class='linkRes'>Calificar producto</a>";
                                                                 echo "<br><br><hr><br>"
                                                                 ." </div>";
                                                                 if($row['stock_Producto']){
@@ -359,6 +357,7 @@
                 mysqli_close($conexion);
             }
             function imprimirDatosCliente(){
+                session_start();
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
@@ -393,6 +392,7 @@
                 mysqli_close($conexion);
             }
             function actualizarStock(){
+                session_start();
                 $conexion = conectarMysql();
                 $stock=0;
                 foreach(array_reverse($_SESSION['carrito']) as $i){
@@ -408,8 +408,21 @@
                     $stock = 0;
                 }
             }
+            
+            function updateVenta(){
+                session_start();
+                $conexion = conectarMysql();
+                if(!$conexion){
+                    echo "ERROR";
+                }
+                $id = $_SESSION['idCliente'];
+                $sql = "INSERT INTO venta (id_Cliente, fecha_Venta) VALUES ($id,now())";
+                $result = $conexion->query($sql);
+            }
+            
             function imprimirListaCompra(){
-                    $conexion = conectarMysql();
+                session_start();
+                $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
                 }
@@ -449,6 +462,7 @@
                 mysqli_close($conexion);
             }
             function vaciarCarrito(){
+                session_start();
                 unset($_SESSION['carrito']);
                 $_SESSION['carrito'] = array();
             }

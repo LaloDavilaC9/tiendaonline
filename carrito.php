@@ -1,7 +1,5 @@
 <?php
-    //session_start();
-    //$_SESSION['carrito'][0] = 1;
-    //$_SESSION['carrito'][1] = 2;
+    session_start();
 ?>
 <html>
     <head>
