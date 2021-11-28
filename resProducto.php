@@ -1,9 +1,9 @@
-<html>
+<html style="background-color: black;">
     <head>
         <title>Reseña de Producto</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
     </head>
-    <body>
+    <body style="background-color: black;">
         <?php
             session_start();
             include ("metodos.php");

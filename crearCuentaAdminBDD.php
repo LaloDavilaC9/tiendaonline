@@ -17,10 +17,11 @@
             //Guardamos las variables mandadas del form anterior.
             $usuario=$_POST['usuario'];
             $contrasenia=$_POST['contrasenia'];
+            $email = $_POST['correo'];
             //Encriptamos la contraseña.
             $pass = password_hash($contrasenia,PASSWORD_DEFAULT);
             //Armamos y ejecutamos la query para insertar un nuevo usuario.
-            $query = "INSERT INTO cuentas(nombre_Cuenta,password_Cuenta) VALUES ('$usuario','$pass')";
+            $query = "INSERT INTO cuentas(nombre_Cuenta,password_Cuenta,email_Cuenta) VALUES ('$usuario','$pass','$email')";
             if(mysqli_query($conexion, $query)){
                 $_SESSION['creacionExitosa']=true;
                 $_SESSION['primeraVez']=1;
