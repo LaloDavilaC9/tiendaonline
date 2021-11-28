@@ -10,7 +10,9 @@
             encabezado();
             echo"<br><br><br><br><br>";
             $idProd = $_GET['id'];
+            $_SESSION['idRes'] = $idProd;
             $idClient = $_SESSION['idCliente'];
+            $usuario = $_SESSION['user'];
             $conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";
@@ -38,13 +40,13 @@
                                                     ."<div>"
                                                         ."<!--Creamos el form que captura los datos de inicios sesion y los manda a-->"
                                                         ."<!--otra pagina que valida que sean correctos los datos.-->"
-                                                        .""
-                                                            ."<h2>Descripción:</h2>"
+                                                        ."<form name='form' action='publicarRes.php' method='post'>"
                                                             ."<h3><p>".$row['descripcion_Producto']."</p></h3>"
                                                             ."<br><br><hr><br><br>"
                                                             ."<h2>Publicar reseña</h2><br>"
+                                                            ."<h3>Usuario:</h3> $usuario"
                                                             ."<h3>Calificación: "
-                                                                ."<select class='camposDesign' name='categoria' size='1' required>"
+                                                                ."<select class='camposDesign' name='calif' size='1' required>"
                                                                     ."<option>5</option>"
                                                                     ."<option>4</option>"
                                                                     ."<option>3</option>"
@@ -52,13 +54,11 @@
                                                                     ."<option>1</option>"
                                                                 ."</select>"
                                                             ."</h3>"
-                                                            ."<textarea name='res' placeholder='¿Qué opinas del juego?' size='200' maxlength='200' rows='20' cols='60' style='border: 1px solid #34bca8;' required></textarea>"
-                                                            ."<br><br><hr><br>"
-                                                            ." </div>";
+                                                            ."<textarea name='res' placeholder='¿Qué opinas del juego?' size='200' maxlength='200' rows='20' cols='60' style='border: 1px solid #FFFFFF; background-color: #282828; color:white; border-radius: 13px; font-size: 14px;' required></textarea>"
+                                                            ."</div>"
+                                                            ."<br><br>";
                                                             if($row['stock_Producto']){
-                                                                echo "<img src='Recursos/iconos/carrito.PNG'><form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
-                                                                . "<input name='idProducto' id='idProducto' type='hidden' value='".$idProd."'>"
-                                                                . "<input type='submit' value='Añadir al carrito' class='botonDesign'>"
+                                                                echo "<input class='btnQuitarDelCarrito' type='submit' value='Publicar'>"
                                                                 ."<br><br><hr><br><br>"
                                                                 ."</form>";
                                                             }else{
