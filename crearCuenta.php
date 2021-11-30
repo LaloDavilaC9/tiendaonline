@@ -11,10 +11,13 @@
     <title>Crear cuenta en hexagon games</title>
     <script language="JavaScript">
         //Valide que se escriba la misma contraseña 2 veces.
-        function valida(form) {
+        function valida5(form) {
             var correcto=true;
-            var formulario=document.form;
+            var formulario=document.form5;
             var aux=0;
+            var er_tel = /^\d{10}$/
+            var er_cp = /(^([0-9]{5,5})|^)$/
+            var er_correo = /^(.+\@.+\..+)$/
             for (var i=0; i<formulario.length; i++) {
                 if(formulario[i].type =='text' || formulario[i].type =='password' ) {
                     if (formulario[i].value == null || formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value)){
@@ -24,6 +27,24 @@
                         break;
                     }
                 }
+                if (formulario[i].type =='email') {
+                    if (!er_correo.test(form.correo.value)){
+                        alert ("Correo no válido");
+                        correcto=false;
+                    }
+                }
+            }
+            if (!er_correo.test(form.correo.value)){
+                alert ("Correo no válido");
+                correcto=false;
+            }
+            if (!er_tel.test(form.telef.value)){
+                alert ("Teléfono no válido");
+                correcto=false;
+            }
+            if (!er_cp.test(form.CP.value)){
+                alert ("CP no válido");
+                correcto=false;
             }
             if (form.confContrasenia.value!=form.contrasenia.value) {
                 alert("Las contraseñas no coinciden, asegurate de haberlas escrito correctamente");
@@ -54,10 +75,16 @@
                                     <div>
                                         <!--Creamos el form que captura los datos de inicios sesion y los manda a-->
                                         <!--otra pagina que valida que sean correctos los datos.-->
-                                        <form name="form" action="crearCuentaBDD.php" method="post">
+                                        <form name="form5" action="crearCuentaBDD.php" method="post">
+                                            <br><br>
+                                            <h2>Actualizar cuenta de usuario</h2>
+                                            <hr>
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido paterno: <input class="camposDesign" type="text" name="apellidoP" required>&nbsp&nbsp&nbsp
                                             <IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido materno: <input class="camposDesign" type="text" name="apellidoM" required><br><br></h3>
+                                            <IMG SRC="Recursos/iconos/calendario.png" ALT="IMAGEN NO DISPONIBLE"> Fecha de nacimiento: <input class="camposDesign" type="date" name="nacimiento" required><br><br></h3>
+                                            <IMG SRC="Recursos/iconos/correo.png" ALT="IMAGEN NO DISPONIBLE"> Email: <input class="camposDesign" type="email" id="email" size="30" name="correo" required><br><br></h3>
+                                            <IMG SRC="Recursos/iconos/telefono.png" ALT="IMAGEN NO DISPONIBLE"> Telefono: <input class="camposDesign" name="telef" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type = "number" maxlength = "10" required><br><br></h3>
                                             <br><br><hr><br><br>
                                             <h3><IMG SRC="Recursos/iconos/contrasena.png" ALT="IMAGEN NO DISPONIBLE"> Contraseña: <input class="camposDesign" type="password" name="contrasenia" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/confirmar.png" ALT="IMAGEN NO DISPONIBLE"> Confirmar contraseña: <input class="camposDesign" type="password" name="confContrasenia" required><br><br></h3>
@@ -82,7 +109,7 @@
                                             </select>
                                             <br><br></h3>
                                             <br><br><hr><br><br>
-                                            <input class="botonLoginDesign" type="button" value="Crear cuenta" onclick="valida(this.form);">
+                                            <input class="botonLoginDesign" type="button" value="Actualizar cuenta" onclick="valida5(this.form);">
                                         </form>
                                     </div>
                                     <br><br><br>

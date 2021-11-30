@@ -26,12 +26,15 @@
             $CP=$_POST['CP'];
             $NoTarjeta=$_POST['NoTarjeta'];
             $categoria=$_POST['categoria'];
+            $fechaNacimiento=$_POST['nacimiento'];
+            $email = $_POST['correo'];
+            $telef = $_POST['telef'];
             //Encriptamos la contraseña.
             $pass = password_hash($contrasenia,PASSWORD_DEFAULT);
             //Armamos y ejecutamos la query para insertar un nuevo usuario.
             $query = "INSERT INTO cliente(nombre_Cliente,apPaterno_Cliente,apMaterno_Cliente,ciudad_Cliente,calle_Cliente,
-            noCalle_Cliente,cPostal_Cliente,tarjeta_Cliente,colonia_Cliente,gusto_Cliente,password_Cliente) VALUES ('$usuario','$apellidoP','$apellidoM',
-            '$ciudad','$calle','$noCalle','$CP','$NoTarjeta','$colonia','$categoria','$pass')";
+                    noCalle_Cliente,cPostal_Cliente,tarjeta_Cliente,colonia_Cliente,gusto_Cliente,password_Cliente,email_Cliente,telefono_Cliente,fechaNacimiento_Cliente)
+                    VALUES ('$usuario','$apellidoP','$apellidoM','$ciudad','$calle','$noCalle','$CP','$NoTarjeta','$colonia','$categoria','$pass','$email','$telef','$fechaNacimiento')";
             if(mysqli_query($conexion, $query)){
                 $_SESSION['creacionExitosa']=true;
                 $_SESSION['primeraVez']=1;

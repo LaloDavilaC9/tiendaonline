@@ -186,6 +186,7 @@
                                             <IMG SRC="Recursos/iconos/correo.png" ALT="IMAGEN NO DISPONIBLE"> Email: <input class="camposDesign" type="email" id="email" size="30" name="correo" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/contrasena.png" ALT="IMAGEN NO DISPONIBLE"> Contraseña: <input class="camposDesign" type="password" name="contrasenia" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/confirmar.png" ALT="IMAGEN NO DISPONIBLE"> Confirmar contraseña: <input class="camposDesign" type="password" name="confContrasenia" required><br><br></h3>
+                                            <input type="text" name="operacion" value="1" hidden>
                                             <br><br><hr><br><br>
                                             <input class="botonLoginDesign" type="button" value="Crear cuenta" onclick="valida(this.form);">
                                         </form>
@@ -208,12 +209,13 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form solamente para borrar usuarios-->
-                                    <form action="borrarUsuario.php" method="post">
+                                    <form action="crearCuentaAdminBDD.php" method="post">
                                         <br><br><br>
                                             <div>
                                                 <h2>Borrar cuenta administradora</h2>
                                                 <hr>
                                                 <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID usuario administrador a borrar: <input class="camposDesign" type="number" name="iduser" required></h3>
+                                                <input type="text" name="operacion" value="2" hidden>
                                                 <br><br>
                                                 <input class="botonLoginDesign" type="reset" value="Limpiar">
                                                 <input class="botonLoginDesign" type="submit" value="Borrar">
@@ -231,18 +233,19 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form especial para actualizar los usuarios-->
-                                    <form name="form2" action="principal.php" method="post">
+                                    <form name="form2" action="crearCuentaAdminBDD.php" method="post">
                                     <br><br><br>
                                         <div>
                                             <h2>Actualizar cuenta administrador</h2>
                                             <hr>
-                                            <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID del usuario a editar: <input class="camposDesign" type="number" name="id" required></h3>
+                                            <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID de la cuenta admin a editar: <input class="camposDesign" type="number" name="id" required></h3>
                                             <hr>
                                             <h3>Datos a actualizar</h3>
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre de la cuenta: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <IMG SRC="Recursos/iconos/correo.png" ALT="IMAGEN NO DISPONIBLE"> Email: <input class="camposDesign" type="email" id="email" size="30" name="correo" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/contrasena.png" ALT="IMAGEN NO DISPONIBLE"> Contraseña: <input class="camposDesign" type="password" name="contrasenia" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/confirmar.png" ALT="IMAGEN NO DISPONIBLE"> Confirmar contraseña: <input class="camposDesign" type="password" name="confContrasenia" required><br><br></h3>
+                                            <input type="text" name="operacion" value="3" hidden>
                                             <br><br><hr><br><br>
                                             <input class="botonLoginDesign" type="button" value="Actualizar cuenta" onclick="valida2(this.form);">
                                             <br><br><br>
@@ -261,10 +264,11 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form solamente para borrar usuarios-->
-                                    <form name="form3" action="carrito.php" method="post">
+                                    <form name="form3" action="crearCuentaAdminBDD.php" method="post">
                                             <br><br>
                                             <h2>Crear cuenta de usuario</h2>
                                             <hr>
+                                            <input type="text" name="operacion" value="4" hidden>
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido paterno: <input class="camposDesign" type="text" name="apellidoP" required>&nbsp&nbsp&nbsp
                                             <IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido materno: <input class="camposDesign" type="text" name="apellidoM" required><br><br></h3>
@@ -309,12 +313,13 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form solamente para borrar usuarios-->
-                                    <form action="borrarUsuario.php" method="post">
+                                    <form action="crearCuentaAdminBDD.php" method="post">
                                         <br><br><br>
                                             <div>
                                                 <h2>Borrar cuenta de usuario</h2>
                                                 <hr>
                                                 <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID usuario a borrar: <input class="camposDesign" type="number" name="iduser" required></h3>
+                                                <input type="text" name="operacion" value="5" hidden>
                                                 <br><br>
                                                 <input class="botonLoginDesign" type="reset" value="Limpiar">
                                                 <input class="botonLoginDesign" type="submit" value="Borrar">
@@ -332,9 +337,11 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form especial para actualizar los usuarios-->
-                                    <form name="form4" action="crearCuentaBDD.php" method="post">
+                                    <form name="form4" action="crearCuentaAdminBDD.php" method="post">
                                             <br><br>
                                             <h2>Actualizar cuenta de usuario</h2>
+                                            <hr>
+                                            <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID del usuario a editar: <input class="camposDesign" type="number" name="id" required></h3>
                                             <hr>
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido paterno: <input class="camposDesign" type="text" name="apellidoP" required>&nbsp&nbsp&nbsp
@@ -364,6 +371,7 @@
                                                 <option>Simulación</option>
                                                 <option>Deportes</option>
                                             </select>
+                                            <input type="text" name="operacion" value="6" hidden>
                                             <br><br></h3>
                                             <br><br><hr><br><br>
                                             <input class="botonLoginDesign" type="button" value="Actualizar cuenta" onclick="valida4(this.form);">
