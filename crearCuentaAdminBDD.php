@@ -30,11 +30,11 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '2': //Borramos al usuario administrador
@@ -45,11 +45,11 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '3': // Actualizamos datos del usuario administrador
@@ -65,11 +65,11 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '4': //Agregamos cliente
@@ -97,11 +97,11 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '5': //Borramos a un cliente
@@ -146,21 +146,78 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '7':
-                    
+                    //Guardamos las variables mandadas del form anterior.
+                    $imagen="null";
+                    $estrellas = 0;
+                    $nombreProd=$_POST['nombreProd'];
+                    $descripcion=$_POST['descripcion'];
+                    $stock=$_POST['stock'];
+                    $precioUnitario=$_POST['precioUnitario'];
+                    $categoria=$_POST['categoria'];
+                    //Armamos y ejecutamos la query para insertar un nuevo usuario.
+                    $query = "INSERT INTO producto(nombre_Producto,descripcion_Producto,stock_Producto,precioUnitario_Producto,
+                            imagen_Producto,estrellas_Producto,categoria_Producto)
+                            VALUES ('$nombreProd','$descripcion','$stock','$precioUnitario','$imagen','$estrellas',' $categoria')";
+                    if(mysqli_query($conexion, $query)){
+                        $_SESSION['creacionExitosa']=true;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: datosUsuarios.php');
+                    }else{
+                        $_SESSION['creacionExitosa']=false;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: principal.php');
+                    }
                     break;
                 case '8':
-                    
+                    //Guardamos las variables mandadas del form anterior.
+                    $idProd = $_POST['id'];
+                    //Armamos y ejecutamos la query para insertar un nuevo usuario.
+                    $query = "DELETE FROM resena where id_Producto='$idProd'";
+                    if(mysqli_query($conexion, $query)){
+                        $_SESSION['creacionExitosa']=true;
+                        $_SESSION['primeraVez']=1;
+                        $query = "DELETE FROM producto where id_Producto=$idProd";
+                        mysqli_query($conexion, $query);
+                        header('Location: datosUsuarios.php');
+                    }else{
+                        $_SESSION['creacionExitosa']=false;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: principal.php');
+                    }
                     break;
                 case '9':
-                    
+                    $idProd = $_POST['id'];
+                    //Guardamos las variables mandadas del form anterior.
+                    $imagen="none";
+                    $estrellas = 0;
+                    $nombreProd=$_POST['nombreProd'];
+                    $descripcion=$_POST['descripcion'];
+                    $stock=$_POST['stock'];
+                    $precioUnitario=$_POST['precioUnitario'];
+                    $categoria=$_POST['categoria'];
+                    //Encriptamos la contraseña.
+                    //Armamos y ejecutamos la query para insertar un nuevo usuario.
+                    $query = "UPDATE producto SET nombre_Producto='$nombreProd',descripcion_Producto='$descripcion',
+                            stock_Producto='$stock',precioUnitario_Producto='$precioUnitario',imagen_Producto='$imagen',
+                            estrellas_Producto='$estrellas',categoria_Producto='$categoria'
+                            WHERE id_Producto='$idProd'";
+                    if(mysqli_query($conexion, $query)){
+                        $_SESSION['creacionExitosa']=true;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: datosUsuarios.php');
+                    }else{
+                        $_SESSION['creacionExitosa']=false;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: principal.php');
+                    }
                     break;
                     default:
                     # code...
