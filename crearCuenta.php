@@ -109,7 +109,7 @@
                                             </select>
                                             <br><br></h3>
                                             <br><br><hr><br><br>
-                                            <input class="botonLoginDesign" type="button" value="Actualizar cuenta" onclick="valida5(this.form);">
+                                            <input class="botonLoginDesign" type="button" value="Crear cuenta" onclick="valida5(this.form);">
                                         </form>
                                     </div>
                                     <br><br><br>

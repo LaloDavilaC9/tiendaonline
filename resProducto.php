@@ -2,6 +2,8 @@
     <head>
         <title>Reseña de Producto</title>
         <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <script language="JavaScript" type="text/javascript" src="./js/ajax.js"></script>
     </head>
     <body style="background-color: black;">
         <?php
@@ -57,13 +59,9 @@
                                                             ."<textarea name='res' placeholder='¿Qué opinas del juego?' size='200' maxlength='200' rows='20' cols='60' style='border: 1px solid #FFFFFF; background-color: #282828; color:white; border-radius: 13px; font-size: 14px;' required></textarea>"
                                                             ."</div>"
                                                             ."<br><br>";
-                                                            if($row['stock_Producto']){
-                                                                echo "<input class='btnQuitarDelCarrito' type='submit' value='Publicar'>"
+                                                            echo "<input class='btnQuitarDelCarrito' type='submit' value='Publicar'>"
                                                                 ."<br><br><hr><br><br>"
                                                                 ."</form>";
-                                                            }else{
-                                                                echo "<h3 style='color:red;'>Stock no disponible</h3>";
-                                                            }
                                                     echo "</div>"
                                                 ."</div>"
                                             ."</TD>"
@@ -71,12 +69,27 @@
                                                 ."&nbsp&nbsp"
                                             ."</TD>"
                                         ."</TR>"
+                                        ."<TR>"
+                                            ."<TD>"
+                                            ."</TD>"
+                                        ."</TR>"
                                     ."</TABlE>"
-                                ."</TD>"
+                                ."</TD>"                           
                             ."</TR>"
                     ."</TABLE>";
                 }
             }
         ?>
+        <form name="consulta" align="center" class="formDesign" action="" onsubmit="MostrarConsulta('conexionBDD.php'); return false">
+            <br>
+            <div><p style="font-size: 28px; font-family: "Benton Sans", sans-serif;"><b>Reseñas</b></p></div>
+            <br>
+            <label>
+                <input type="submit" class='btnQuitarDelCarrito' value="Ver reseñas"/>
+            </label>
+            <br><br><hr><br>
+            <p id='resultado' align='center' style='color: white'></p>
+            <br>
+        </form>
     </body>
 </html>

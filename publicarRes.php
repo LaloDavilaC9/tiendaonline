@@ -14,5 +14,20 @@
     //Se publica la reseña
     $result = $conexion->query($query);
     unset($_SESSION['idRes']);
+    //Se actualizan las estrellas
+    $query = "SELECT * FROM producto WHERE id_Producto = '$idProd'";
+    $result = $conexion->query($query);
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            $estrellas = $row['estrellas_Producto'];
+        }
+    }
+    //Sacando el valor de la reseña actual
+    $aux = $estrellas + $cal;
+    $aux2 = $aux/2;
+    $califActual = round($aux2);
+    //Haciendo UPDATE de la calificación del producto
+    $query = "UPDATE producto SET estrellas_Producto = '$califActual' WHERE id_Producto = '$idProd'";
+    $result = $conexion->query($query);
     header('Location: principal.php');
 ?>
