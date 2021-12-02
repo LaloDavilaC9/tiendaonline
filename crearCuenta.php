@@ -77,7 +77,7 @@
                                         <!--otra pagina que valida que sean correctos los datos.-->
                                         <form name="form5" action="crearCuentaBDD.php" method="post">
                                             <br><br>
-                                            <h2>Actualizar cuenta de usuario</h2>
+                                            <h2>Crear cuenta de usuario</h2>
                                             <hr>
                                             <h3><IMG SRC="Recursos/iconos/usuario.png" ALT="IMAGEN NO DISPONIBLE"> Nombre: <input class="camposDesign" type="text" name="usuario" required><br><br></h3>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> Apellido paterno: <input class="camposDesign" type="text" name="apellidoP" required>&nbsp&nbsp&nbsp
