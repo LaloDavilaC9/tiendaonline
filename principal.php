@@ -51,7 +51,7 @@
                 ."<br><br>"
                 ."<img src='Recursos/BANNER HEXAGON GAMES.jpg' id='img_banner2'>"
             ."</div>";
-            paginaPrincipal();
+            paginaPrincipal("","JUEGOS MEJOR CALIFICADOS");
         ?>
     </body>
 </html>

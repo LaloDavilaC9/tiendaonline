@@ -14,11 +14,27 @@
     <?php
         include ("metodos.php");
         encabezado();
-        echo"<br><br><br><br><br><br><br><br>";
-        $usuario = $_SESSION['user'];
-        $admin = $_SESSION['admin'];
-        include ("sqlConn.php");
-        $conexion = conectar();
+        
+            echo"<br><br><br><br><br><br><br><br>";
+            echo "<hr width=97%><br>";
+            echo "<table align=center class='tabla-c-bordes2' width=97%>"
+                . "<tr>"
+                    . "<td align='center'>"
+                        . "<H2>"
+                            . "CONFIGURACIÓN DEL PERFIL"
+                        . "</H2>"
+                    . "</td>"
+                . "</tr>"
+            . "</table>";
+            echo "<br>";
+        
+        if(isset($_SESSION['user'])){
+            $usuario = $_SESSION['user'];
+            $admin = $_SESSION['admin'];
+            include ("sqlConn.php");
+            $conexion = conectar();
+
+             
         if(!$conexion){
             echo "ERROR";
         }
@@ -144,6 +160,13 @@
         }
         //mysqli_stmt_close($stmt);
         mysqli_close($conexion);
+        }
+        else{
+            
+            mensajeInicieSesion();
+         
+        }
+       
     ?>
 </body>
 </html>

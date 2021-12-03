@@ -1,10 +1,6 @@
 
 <?php
-         if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-            
-        } 
+    if(!isset($_SESSION)) {session_start();} 
 ?>
 
 <!DOCTYPE html>
@@ -17,31 +13,51 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="ajaxProceso.js"></script>
 </head>
-<body onload="vaciarChat();">
+<body>
     <?php
         include ("metodos.php");
         encabezado();
+        
+        echo"<br><br><br><br><br><br><br><br>";
+        echo "<hr width=97%><br>";
+        echo "<table align=center class='tabla-c-bordes2' width=97%>"
+              . "<tr>"
+                  . "<td align='center'>"
+                      . "<H2>"
+                          . "CHAT DE SOPORTE TÉCNICO"
+                      . "</H2>"
+                  . "</td>"
+              . "</tr>"
+          . "</table>";
+        echo "<br>";  
     ?>
-    <br><br><br><br><br><br><br><br>
+
    
-    <?php 
-        echo "<input type='hidden' id='user' value='".    $_SESSION['user']."'>";
+    <?php
+        if(isset($_SESSION['user'])){
+            echo " <input type='hidden' id='user' value='".$_SESSION['user']."'>";
     ?>
-    
-    <div id="formChat">
-        <p>
-            CHAT DE SOPORTE TÉCNICO
-        </p>
+            
+  
+    <div id="formChat" class="bordes3">
         <br>
-          <div id="mensajes" style="color:white;"></div>
-          <br><br>
+        <div id="mensajes" style="color:white;"></div>
+        <br><br>
         <div>
             <input type="text" autofocus id="message" placeholder="Ingresa tu mensaje">
             <button onclick="send()">ENVIAR</button><br><br>
         </div>
-      
-        
     </div>
+          
+    
+  
+    <?php   }
+        else{
+             mensajeInicieSesion();
+        }
+
+    ?>
+   
    
      <script type="text/javascript">
         var comet = new AjaxPush('listenerChat.php', 'senderChat.php');

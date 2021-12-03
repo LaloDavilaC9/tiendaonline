@@ -45,11 +45,19 @@
                             </TD>
                             <TD width=25% ALIGN=center>
                                 <h3><a href='datosUsuarios.php'>Perfil</a></h3>
-                            </TD>
-                            <TD width=25% ALIGN=left>
+                            </TD>";
+               if(isset($_SESSION['user'])){
+                   echo "  <TD width=25% ALIGN=left>
                                 <h3><a href='cerrarSesion.php'>Cerrar sesión</a></h3>
-                            </TD>
-                             <TD width=25% ALIGN=left>
+                            </TD>";
+               }else{
+                    echo "  <TD width=25% ALIGN=left>
+                                <h3><a href='login.php'>Iniciar sesión</a></h3>
+                            </TD>";
+               }
+              
+                          
+                echo        "<TD width=25% ALIGN=left>
                                 <h3><a href='chat.php'>Chat</a></h3>
                             </TD>
                             <TD>
@@ -96,18 +104,31 @@
                         </TR>
                     </TABLE>";
             }
-            function paginaPrincipal($sql=""){
+            
+            function paginaPrincipal($sql="",$titulo=""){
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
                 }
                 else{
                     if($sql==""){
-                        $sql = "SELECT * FROM producto WHERE estrellas_Producto='5'";
+                        $sql = "SELECT * FROM producto WHERE estrellas_Producto='5' ORDER BY id_producto desc";
                     }
                     $result = $conexion->query($sql);
                 }
                 echo "<br><hr width=97%><br>";
+                                    echo "<table align=center class='tabla-c-bordes2' width=97%>"
+                        . "<tr>"
+                            . "<td align='center'>"
+                                . "<H2>"
+                                    . $titulo
+                                . "</H2>"
+                            . "</td>"
+                        . "</tr>"
+                    . "</table>";
+                    echo "<br>";
+                
+             
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
                         $id = $row['id_Producto'];
@@ -147,18 +168,30 @@
                                             ."</tr>"
                                         ."</table>"
                                     ."</td>";
-                                if($row['stock_Producto']!=0){
-                                    echo "<td align'right'>"
-                                    . "<form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
-                                    . "<input name='idProducto' id='idProducto' type='hidden' value='".$id."'>"
-                                    . "<input type='image' src='Recursos/iconos/carrito.png' class='anadirCarrito'>"
-                                    . "</form></td>";
+                        
+                                if(isset($_SESSION['user'])){
+                                    if($row['stock_Producto']!=0){
+                                           echo "<td align'right'>"
+                                           . "<form method='GET' action='procesamientoFormularios/procesarItemCarrito.php' >"
+                                           . "<input name='idProducto' id='idProducto' type='hidden' value='".$id."'>"
+                                           . "<input type='image' src='Recursos/iconos/carrito.png' class='anadirCarrito'>"
+                                           . "</form></td>";
+                                       }
+                                       else{
+                                           echo "<br><td>No disponible</td>";
+                                       }
+                                        echo "</tr>";
                                 }
                                 else{
-                                    echo "<br><td>No disponible</td>";
+                                    echo "<td><a href='login.php' style='color:white;' >Iniciar sesión</a></td>";
+                                                                        echo "</tr>";
+
                                 }
-                                echo "</tr>"
-                            ."</table>"
+                            
+
+                                
+                             
+                     echo "</table>"
                         ."<br>";
                         echo "<hr width=97%><br>";
                     }
@@ -479,6 +512,17 @@
                 
                 $conexion->query($consulta);
                 mysqli_close($conexion);
+            }
+            
+            function mensajeInicieSesion(){
+                       echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                        ."<TR>"
+                            ."<TD width=90%>"
+                                    ."<H3 style='color: white' align=center><a href='login.php'>INICIE SESIÓN PARA VER ESTA PÁGINA</a></H3>"
+                                ."</TD>"
+                            ."</TR>"
+                    ."</TABLE>"
+                    ."<br>";
             }
         ?>
 

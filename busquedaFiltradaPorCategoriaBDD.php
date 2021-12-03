@@ -17,7 +17,8 @@
         echo"<br><br><br><br><br><br><br><br>";
         $busqueda=$_POST['categoria'];
         $sql = "SELECT * FROM producto WHERE categoria_Producto = '$busqueda'";
-        paginaPrincipal($sql);
+        $titulo = "RELACIONADOS CON LA BÚSQUEDA POR CATEGORÍAS";
+        paginaPrincipal($sql,$titulo);
         /*$busqueda=$_POST['categoria'];
             $conexion = conectarMysql();
             if(!$conexion){

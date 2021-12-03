@@ -22,22 +22,31 @@
                 . "</tr>"
             . "</table>";
             echo "<br>";
-            $x=0;
-            totalCarrito();
-            foreach(array_reverse($_SESSION['carrito']) as $i){
-                itemCarrito($i);
-                $x++;
+            
+            
+            if(isset($_SESSION['user'])) 
+            {
+                  $x=0;
+                totalCarrito();
+                foreach(array_reverse($_SESSION['carrito']) as $i){
+                    itemCarrito($i);
+                    $x++;
+                }
+                if($x==0){
+                    echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                            ."<TR>"
+                                ."<TD width=90%>"
+                                        ."<H3 style='color: white' align=center><u>CARRITO VACÍO</u></H3>"
+                                    ."</TD>"
+                                ."</TR>"
+                        ."</TABLE>"
+                        ."<br>";
+                }
             }
-            if($x==0){
-                echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
-                        ."<TR>"
-                            ."<TD width=90%>"
-                                    ."<H3 style='color: white' align=center><u>CARRITO VACÍO</u></H3>"
-                                ."</TD>"
-                            ."</TR>"
-                    ."</TABLE>"
-                    ."<br>";
+            else{
+                mensajeInicieSesion();  
             }
+          
         ?>
     </body>
 </html>
