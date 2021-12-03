@@ -28,7 +28,7 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form especial para actualizar los usuarios-->
-                                    <form name="form6" action="crearCuentaAdminBDD.php" method="post">
+                                    <form name="form6" action="crearCuentaAdminBDD.php" method="post"  enctype="multipart/form-data">
                                             <br><br>
                                             <h2>Dar de alta un producto</h2>
                                             <hr>
@@ -49,9 +49,14 @@
                                                 <option>Simulación</option>
                                                 <option>Deportes</option>
                                             </select>
-                                            <input type="text" name="operacion" value="7" hidden>
+                                            <br><br><hr>
+                                            <br><br>
+                                             
+                                            <h3><IMG SRC="Recursos/iconos/corazon.png" ALT="IMAGEN NO DISPONIBLE"> Elegir imagen:
+                                             <input type="file" name="fileToUpload" id="fileToUpload">
                                             <br><br></h3>
                                             <br><br><hr><br><br>
+                                            <input type="text" name="operacion" value="7" hidden>
                                             <input class="botonLoginDesign" type="submit" value="Agregar producto">
                                             <br><br><br>
                                         </form>
@@ -70,6 +75,7 @@
                                             <hr>
                                             <h3><IMG SRC="Recursos/iconos/info.png" ALT="IMAGEN NO DISPONIBLE"> ID del producto a borrar: <input class="camposDesign" type="number" name="id" required></h3>
                                             <hr>
+                                            
                                             <input type="text" name="operacion" value="8" hidden>
                                             <br><br></h3>
                                             <input class="botonLoginDesign" type="submit" value="Borrar producto">
@@ -84,7 +90,7 @@
                             <TR>
                                 <TD width=100% align="center" class="formDesign" class="imagenLogin">
                                     <!--Creamos un form especial para actualizar los usuarios-->
-                                    <form name="form8" action="crearCuentaAdminBDD.php" method="post">
+                                    <form name="form8" action="crearCuentaAdminBDD.php" method="post" enctype="multipart/form-data">
                                             <br><br>
                                             <h2>Actualizar un producto</h2>
                                             <hr>
@@ -107,6 +113,10 @@
                                                 <option>Simulación</option>
                                                 <option>Deportes</option>
                                             </select>
+                                            <h3><IMG SRC="Recursos/iconos/corazon.png" ALT="IMAGEN NO DISPONIBLE"> Elegir imagen:
+                                             <input type="file" name="fileToUpload" id="fileToUpload">
+                                            <br><br></h3>
+                                            <br><br><hr><br><br>
                                             <input type="text" name="operacion" value="9" hidden>
                                             <br><br></h3>
                                             <br><br><hr><br><br>
