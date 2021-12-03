@@ -1,4 +1,5 @@
 .tabla-c-bordes{
+    background-color: black;
     background-image: url(../Recursos/iconos/fondoLogin.jpg);
     position: absolute;
     border-collapse: separate;

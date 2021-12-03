@@ -80,7 +80,7 @@
 }
 
 .botonBusquedaDesign{
-    background-color: palevioletred;
+    background-color: black;
     background-image: url(../Recursos/iconos/buscar.jpg);
     border: 12;
     color: rgb(34, 26, 26);
@@ -213,4 +213,23 @@ img#img_banner2{
 .linkRes:hover{
     font-size:1.2em;
     text-decoration: underline;
+}
+dialog{
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 10s linear 10s,opacity 10s linear;
+}
+dialog::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .7);
+    -webkit-animation: none;
+}
+dialog[open] {
+    visibility:visible;
+    opacity:1;
+    transition-delay:0s;
 }

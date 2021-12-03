@@ -27,6 +27,8 @@
                         $_SESSION['user']=$usuario;//Guardamos en una variable se sesion el usuario que accedió.
                         $_SESSION['admin'] = 0;//Guardamos en una variable de sesion si es o no admin.
                         $_SESSION['idCliente'] = $pass['id_Cliente']; //Guardamos en una variable de sesión el ID del usuario
+                        $_SESSION['gusto']= $pass['gusto_Cliente'];
+                        $_SESSION['aviso']=1;
                     }
                 }
                 header('Location: principal.php');
@@ -40,6 +42,8 @@
                             $_SESSION['autentif']=TRUE;
                             $_SESSION['user']=$usuario;//Guardamos en una variable se sesion el usuario que accedió.
                             $_SESSION['admin'] = 1;//Guardamos en una variable de sesion si es o no admin.
+                            $_SESSION['gusto']= "NO";
+                            $_SESSION['aviso']=0;
                         }
                     }
                     header('Location: principal.php');

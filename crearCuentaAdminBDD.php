@@ -219,11 +219,22 @@
                         header('Location: principal.php');
                     }
                     break;
-                    default:
-                    # code...
+                case '10':
+                    $tituloAviso=$_POST['tituloAviso'];
+                    $descripcionAviso=$_POST['descripcionAviso'];
+                    $categoria = $_POST['categoria'];
+                    $query = "UPDATE avisos SET tituloAviso='$tituloAviso',descripcionAviso='$descripcionAviso',generoAviso='$categoria' WHERE idavisos='1'";
+                    if(mysqli_query($conexion, $query)){
+                        $_SESSION['creacionExitosa']=true;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: datosUsuarios.php');
+                    }else{
+                        $_SESSION['creacionExitosa']=false;
+                        $_SESSION['primeraVez']=1;
+                        header('Location: datosUsuarios.php');
+                    }
                     break;
-            }
+                }
         ?>
 </body>
-
 </html>
