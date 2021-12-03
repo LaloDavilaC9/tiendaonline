@@ -1,0 +1,58 @@
+#formChat{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: white;
+    border-style: solid;
+}
+
+#formChat input{
+    font-family: "Benton Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    color: #000000;
+    background-color: white;
+    border: 12;
+    color: black;
+    padding: 15px 150px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px; 
+    cursor: pointer;
+}
+
+#formChat button{
+    background-color: palevioletred;
+    background-image: url(../Recursos/iconos/fondoBoton.jpg);
+    border: 12;
+    color: white;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    cursor: pointer;
+}
+
+#formChat p{
+    font-family: calibri; 
+    font-size: 30px;
+    color: white;
+    
+}
+
+.mensajesMostrados{
+    display: block;
+}
+
+.mensajesOcultos{
+    display:none;
+}

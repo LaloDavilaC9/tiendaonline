@@ -49,6 +49,9 @@
                             <TD width=25% ALIGN=left>
                                 <h3><a href='cerrarSesion.php'>Cerrar sesión</a></h3>
                             </TD>
+                             <TD width=25% ALIGN=left>
+                                <h3><a href='chat.php'>Chat</a></h3>
+                            </TD>
                             <TD>
                                 <form action='busquedaFiltradaBDD.php' method='post'>
                                     <TABLE>
