@@ -418,6 +418,7 @@
                 $id = $_SESSION['idCliente'];
                 $sql = "INSERT INTO venta (id_Cliente, fecha_Venta) VALUES ($id,now())";
                 $result = $conexion->query($sql);
+                mysqli_close($conexion);
             }
             
             function imprimirListaCompra(){
@@ -465,6 +466,16 @@
                 session_start();
                 unset($_SESSION['carrito']);
                 $_SESSION['carrito'] = array();
+            }
+            
+            function agregarAlChat($consulta){
+                $conexion = conectarMysql();
+                if(!$conexion){
+                    echo "ERROR";
+                }
+                
+                $conexion->query($consulta);
+                mysqli_close($conexion);
             }
         ?>
 
