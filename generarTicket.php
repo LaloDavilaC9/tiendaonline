@@ -1,10 +1,6 @@
 
 <?php
-         if(!isset($_SESSION)) {session_start(); } 
-         use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\SMTP;
-        use PHPMailer\PHPMailer\Exception;
-
+    if(!isset($_SESSION)) {session_start(); } 
 ?>
 <!DOCTYPE html>
 
@@ -46,45 +42,44 @@
             </div>
         <?php }
     ?>
-    <?php   if( count($_SESSION['carrito'])!=0){
-            $precio = $_POST['precio'];
-            //Aqui va el banner
-            //Se mandan a imprimir los datos del cliente
-            $cliente = imprimirDatosCliente();
-            echo "<br>";
-            //Se mandan a imprimir los items de la compra
-            $compra = imprimirListaCompra();
-            echo"<br>";
-            echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
-                    ."<TR align=center>"
-                        ."<TD>"
-                            ."<h3 style='color:white;'>TOTAL PAGADO: $".$precio.".00 MXN <br><br>Envío: $0.00 MXN</h3>"
-                        ."<TD>"
-                    ."</TR>"
-                ."</TABLE>"
-                ."<br>";
-            //Se vacía el carrito porque ya finalizó la compra
-            actualizarStock();
-            vaciarCarrito();
+    <?php   
+    
+    if( count($_SESSION['carrito'])!=0){
+        $precio = $_POST['precio'];
+        //Aqui va el banner
+        //Se mandan a imprimir los datos del cliente
+        $cliente = imprimirDatosCliente();
+        echo "<br>";
+        //Se mandan a imprimir los items de la compra
+        $compra = imprimirListaCompra();
+        echo"<br>";
+        echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
+                ."<TR align=center>"
+                    ."<TD>"
+                        ."<h3 style='color:white;'>TOTAL PAGADO: $".$precio.".00 MXN <br><br>Envío: $0.00 MXN</h3>"
+                    ."<TD>"
+                ."</TR>"
+            ."</TABLE>"
+            ."<br>";
+        //Se vacía el carrito porque ya finalizó la compra
+        actualizarStock();
+        vaciarCarrito();
 
-             //Sigue proceso para mandar el correo al administrador
-   
-            $receiver = "eduardo.davilac9@gmail.com,Hexagongames.gamers@gmail.com,casillas.vdl@gmail.com,luisbelar31@gmail.com";
-            $subject = "NUEVA VENTA";
-            $body = "¡Hola! Se realizó una nueva compra a nombre de {$cliente} comprando lo siguiente: \n{$compra}\nTotal de compra: \${$precio}";
-            $sender = "From:Hexagon Games";
-            if(mail($receiver, $subject, $body, $sender)){
-                //echo "Email sent successfully to $receiver";
-            }else{
-                echo "Sorry, failed while sending mail!";
-            }
-         
+         //Sigue proceso para mandar el correo al administrador
 
+        $receiver = "eduardo.davilac9@gmail.com,Hexagongames.gamers@gmail.com,casillas.vdl@gmail.com,luisbelar31@gmail.com";
+        $subject = "NUEVA VENTA";
+        $body = "¡Hola! Se realizó una nueva compra a nombre de {$cliente} comprando lo siguiente: \n{$compra}\nTotal de compra: \${$precio}";
+        $sender = "From:Hexagon Games";
+        if(mail($receiver, $subject, $body, $sender)){
+            //echo "Email sent successfully to $receiver";
+        }else{
+            echo "Sorry, failed while sending mail!";
         }
-        else{
-            echo "<h3 align=center style='color:white;'>UPS! no debería de estar aquí</h3>";
-        }
-
+    }
+    else{
+        echo "<h3 align=center style='color:white;'>UPS! no debería de estar aquí</h3>";
+    }
     ?>
 </body>
 </html>
