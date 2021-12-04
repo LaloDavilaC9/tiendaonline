@@ -1,10 +1,10 @@
 
 <?php
-         if(!isset($_SESSION)) 
-        { 
-            session_start(); 
-            
-        } 
+         if(!isset($_SESSION)) {session_start(); } 
+         use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\SMTP;
+        use PHPMailer\PHPMailer\Exception;
+
 ?>
 <!DOCTYPE html>
 
@@ -50,10 +50,10 @@
             $precio = $_POST['precio'];
             //Aqui va el banner
             //Se mandan a imprimir los datos del cliente
-            imprimirDatosCliente();
+            $cliente = imprimirDatosCliente();
             echo "<br>";
             //Se mandan a imprimir los items de la compra
-            imprimirListaCompra();
+            $compra = imprimirListaCompra();
             echo"<br>";
             echo "<TABLE style='background-color: rgb(20, 20, 20)' class='bordes3' width=97% align=center CELLSPACING=0 CELLPADDING=7>"
                     ."<TR align=center>"
@@ -68,6 +68,18 @@
             vaciarCarrito();
 
              //Sigue proceso para mandar el correo al administrador
+   
+            $receiver = "eduardo.davilac9@gmail.com,Hexagongames.gamers@gmail.com,casillas.vdl@gmail.com,luisbelar31@gmail.com";
+            $subject = "NUEVA VENTA";
+            $body = "¡Hola! Se realizó una nueva compra a nombre de {$cliente} comprando lo siguiente: \n{$compra}\nTotal de compra: \${$precio}";
+            $sender = "From:Hexagon Games";
+            if(mail($receiver, $subject, $body, $sender)){
+                //echo "Email sent successfully to $receiver";
+            }else{
+                echo "Sorry, failed while sending mail!";
+            }
+         
+
         }
         else{
             echo "<h3 align=center style='color:white;'>UPS! no debería de estar aquí</h3>";

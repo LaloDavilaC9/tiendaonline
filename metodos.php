@@ -393,7 +393,7 @@
                 mysqli_close($conexion);
             }
             function imprimirDatosCliente(){
-                session_start();
+                $cliente = "";
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
@@ -422,13 +422,14 @@
                                 ."</TR>"
                             ."</TABLE>"
                             ."<br>";
+                            $cliente = $row['nombre_Cliente']." " .$row['apPaterno_Cliente'];
                         }
                     }
                 }
                 mysqli_close($conexion);
+                return $cliente;
             }
             function actualizarStock(){
-                session_start();
                 $conexion = conectarMysql();
                 $stock=0;
                 foreach(array_reverse($_SESSION['carrito']) as $i){
@@ -446,7 +447,6 @@
             }
             
             function updateVenta(){
-                session_start();
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
@@ -458,7 +458,7 @@
             }
             
             function imprimirListaCompra(){
-                session_start();
+                $compra = "";
                 $conexion = conectarMysql();
                 if(!$conexion){
                     echo "ERROR";
@@ -492,14 +492,15 @@
                                         ."</TR>"
                                     ."</TABLE>"
                                     ."<br>";
+                                $compra .= $row['nombre_Producto']." en $".$row['precioUnitario_Producto']."\n";
                             }
                     }
                     echo "</table>";
                 }
                 mysqli_close($conexion);
+                return $compra;
             }
             function vaciarCarrito(){
-                session_start();
                 unset($_SESSION['carrito']);
                 $_SESSION['carrito'] = array();
             }
