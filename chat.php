@@ -2,7 +2,6 @@
 <?php
     if(!isset($_SESSION)) {session_start();} 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,8 +36,6 @@
         if(isset($_SESSION['user'])){
             echo " <input type='hidden' id='user' value='".$_SESSION['user']."'>";
     ?>
-            
-  
     <div id="formChat" class="bordes3">
         <br>
         <div id="mensajes" style="color:white;"></div>
@@ -48,17 +45,12 @@
             <button onclick="send()">ENVIAR</button><br><br>
         </div>
     </div>
-          
-    
-  
     <?php   }
         else{
              mensajeInicieSesion();
         }
 
     ?>
-   
-   
      <script type="text/javascript">
         var comet = new AjaxPush('listenerChat.php', 'senderChat.php');
         var n = new Function("return (Math.random()*190+85).toFixed(0)");
@@ -76,8 +68,5 @@
             })
             
         }
- 
     </script>
-    
- 
 </html>
