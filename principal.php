@@ -1,5 +1,8 @@
 <?php
-    if(!isset($_SESSION)) {session_start(); } 
+    if(!isset($_SESSION)) {session_start(); }
+    if(!isset($_SESSION['gusto'])){
+        $_SESSION['gusto'] = '';
+    }
 ?>
 <html>
     <head>
@@ -27,28 +30,27 @@
             }
         }
         //Se pintan los avisos existentes dependiendo de los gustos del usuario
-        if ($_SESSION['gusto']==$genero && $_SESSION['aviso']==1) {
-            echo"<dialog id='DialogoNotificacion' class='formDesign'>"
-                ."<h2 align='center'> $titulo </h2>"
-                ."<hr>"
-                ."<p align='center' style='font-size: 18px;'><b> $descripcion </b></p>"
-                ."<br>"
-                ."<form action='' class='formDesign'>"
-                    ."<button class='botonLoginDesign' type='submit'>Cerrar</button>"
-                ."</form>"
-            ."</dialog>"
-            ."<script language='JavaScript'>"
-                ."var dialogo = document.getElementById('DialogoNotificacion');"
-                ."dialogo.showModal();"
-                ."dialogo.addEventListener('click', function(){"
-                ."dialogo.close();"
-                ."});"
-            ."</script>";
-            $_SESSION['aviso']=0;
-        }
+            if ($_SESSION['gusto']==$genero && $_SESSION['aviso']==1) {
+                echo"<dialog id='DialogoNotificacion' class='formDesign'>"
+                    ."<h2 align='center'> $titulo </h2>"
+                    ."<hr>"
+                    ."<p align='center' style='font-size: 18px;'><b> $descripcion </b></p>"
+                    ."<br>"
+                    ."<form action='' class='formDesign'>"
+                        ."<button class='botonLoginDesign' type='submit'>Cerrar</button>"
+                    ."</form>"
+                ."</dialog>"
+                ."<script language='JavaScript'>"
+                    ."var dialogo = document.getElementById('DialogoNotificacion');"
+                    ."dialogo.showModal();"
+                    ."dialogo.addEventListener('click', function(){"
+                    ."dialogo.close();"
+                    ."});"
+                ."</script>";
+                $_SESSION['aviso']=0;
+            }
     ?>
         <?php
-        
             //Se pinta el encabezado y los juegos mejor calificados
             encabezado();
             echo"<br><br><br><br><br><br>";

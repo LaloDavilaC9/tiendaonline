@@ -74,7 +74,7 @@
                                             ."</TD>"
                                         ."</TR>"
                                     ."</TABlE>"
-                                ."</TD>"                           
+                                ."</TD>"
                             ."</TR>"
                     ."</TABLE>";
                 }
@@ -82,7 +82,7 @@
         ?>
         <form name="consulta" align="center" class="formDesign" action="" onsubmit="MostrarConsulta('conexionBDD.php'); return false">
             <br>
-            <div><p style="font-size: 28px; font-family: "Benton Sans", sans-serif;"><b>Reseñas</b></p></div>
+            <div><p style="font-size: 28px; font-family: 'Benton Sans', sans-serif;"><b>Reseñas</b></p></div>
             <br>
             <label>
                 <input type="submit" class='btnQuitarDelCarrito' value="Ver reseñas"/>

@@ -1,3 +1,6 @@
+<?php
+    if(!isset($_SESSION)) {session_start();}
+?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: black;">
 <head>
@@ -51,9 +54,8 @@
                                             </select>
                                             <br><br><hr>
                                             <br><br>
-                                             
                                             <h3><IMG SRC="Recursos/iconos/corazon.png" ALT="IMAGEN NO DISPONIBLE"> Elegir imagen:
-                                             <input type="file" name="fileToUpload" id="fileToUpload">
+                                            <input type="file" name="fileToUpload" id="fileToUpload">
                                             <br><br></h3>
                                             <br><br><hr><br><br>
                                             <input type="text" name="operacion" value="7" hidden>

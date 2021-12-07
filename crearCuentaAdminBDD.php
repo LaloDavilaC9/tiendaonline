@@ -112,11 +112,11 @@
                     if(mysqli_query($conexion, $query)){
                         $_SESSION['creacionExitosa']=true;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: login.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '6': //Actualizar datos del cliente
@@ -176,7 +176,7 @@
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: principal.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '8':
@@ -193,7 +193,7 @@
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: principal.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '9':
@@ -220,7 +220,7 @@
                     }else{
                         $_SESSION['creacionExitosa']=false;
                         $_SESSION['primeraVez']=1;
-                        header('Location: principal.php');
+                        header('Location: datosUsuarios.php');
                     }
                     break;
                 case '10':
@@ -239,9 +239,6 @@
                     }
                     break;
                 }
-                
-                
-                
                 function guardarImagen(){
                     $target_dir = "Recursos/fotosProductos/"; //directorio en el que se subira
                     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);//se añade el directorio y el nombre del archivo

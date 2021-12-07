@@ -409,7 +409,7 @@
                                         ."<form name='form' action='crearCuentaAdminBDD.php' method='post' align=center>"
                                             ."<h2>DATOS DEL CLIENTE<br></h2>"
                                             ."<h3><u>Nombre del cliente:</u> ".$row['nombre_Cliente']."<br></h3>"
-                                            ."<h3><u>Apellidos:</u> ".$row['apPaterno_Cliente']."".$row['apMaterno_Cliente']."<br></h3>"
+                                            ."<h3><u>Apellidos:</u> ".$row['apPaterno_Cliente']." ".$row['apMaterno_Cliente']."<br></h3>"
                                             ."<h3><u>Ciudad:</u> ".$row['ciudad_Cliente']."<br></h3>"
                                             ."<h3><u>Colonia:</u> ".$row['colonia_Cliente']."<br></h3>"
                                             ."<h3><u>Calle:</u> ".$row['calle_Cliente']."<br></h3>"
