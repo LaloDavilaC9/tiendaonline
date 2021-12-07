@@ -4,25 +4,37 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color: black;">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./estilos/estilo_tabla.css">
-    <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./estilos/estilo_tabla.css">
+        <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
+        <title>Document</title>
+    </head>
 
-<body style="background-color: black;">
-    <?php
-        include("metodos.php");
-        encabezado();
-        echo"<br><br><br><br><br><br><br><br>";
-        $busqueda=$_POST['categoria'];
-        $sql = "SELECT * FROM producto WHERE categoria_Producto = '$busqueda'";
-        $titulo = "RELACIONADOS CON LA BÚSQUEDA POR CATEGORÍAS";
-        paginaPrincipal($sql,$titulo);
-        /*$busqueda=$_POST['categoria'];
+    <body style="background-color: black;">
+        <?php
+            include("metodos.php");
+            //Se pinta el encabezado
+            encabezado();
+            echo"<br><br><br><br><br><br><br><br>";
+            $busqueda=$_POST['categoria'];
+            $sql = "SELECT * FROM producto WHERE categoria_Producto = '$busqueda'";
+            $titulo = "RELACIONADOS CON LA BÚSQUEDA POR CATEGORÍAS";
+            //Se pinta la página principal mandándole la información de la búsqueda
+            paginaPrincipal($sql,$titulo);
+        ?>
+    </body>
+</html>
+
+
+
+
+
+
+
+<!--$busqueda=$_POST['categoria'];
             $conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";
@@ -80,7 +92,4 @@
                 echo "0 resultados";
             }
             //mysqli_stmt_close($stmt);
-            mysqli_close($conexion);*/
-    ?>
-</body>
-</html>
+            mysqli_close($conexion);-->

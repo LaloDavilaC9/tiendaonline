@@ -9,6 +9,7 @@
     <body class="fondoCarrito" style="overflow-x: hidden;">
     <?php
         include ("metodos.php");
+        //Conectamos a la base de datos
         $conexion = conectarMysql();
         if(!$conexion){
             echo "ERROR";
@@ -17,6 +18,7 @@
             $sql = "SELECT * FROM avisos WHERE idavisos='1'";
             $result = $conexion->query($sql);
         }
+        //Obtenemos los avisos existentes
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $titulo=$row['tituloAviso'];
@@ -24,6 +26,7 @@
                 $genero=$row['generoAviso'];
             }
         }
+        //Se pintan los avisos existentes dependiendo de los gustos del usuario
         if ($_SESSION['gusto']==$genero && $_SESSION['aviso']==1) {
             echo"<dialog id='DialogoNotificacion' class='formDesign'>"
                 ."<h2 align='center'> $titulo </h2>"
@@ -45,6 +48,8 @@
         }
     ?>
         <?php
+        
+            //Se pinta el encabezado y los juegos mejor calificados
             encabezado();
             echo"<br><br><br><br><br><br>";
             echo "<div id='banner2'>"
@@ -55,3 +60,4 @@
         ?>
     </body>
 </html>
+

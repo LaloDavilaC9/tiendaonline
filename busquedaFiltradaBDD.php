@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./estilos/estilo_tabla.css">
     <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
-    <title>Document</title>
+    <title>Búsqueda por título</title>
 </head>
 
 <body style="background-color: black;">
@@ -22,12 +22,11 @@
         $sql = "SELECT * FROM producto WHERE nombre_Producto LIKE '%$busqueda%'";
         $titulo = "RELACIONADOS CON LA BÚSQUEDA POR TÍTULO";
         paginaPrincipal($sql,$titulo)
-        
-        
-        
-        
-        
-            /*$conexion = conectarMysql();
+    ?>
+</body>
+</html>
+
+<!--       /*$conexion = conectarMysql();
             if(!$conexion){
                 echo "ERROR";
             }
@@ -84,7 +83,4 @@
                 echo "0 resultados";
             }
             //mysqli_stmt_close($stmt);
-            mysqli_close($conexion);*/
-    ?>
-</body>
-</html>
+            mysqli_close($conexion);*/ -->
